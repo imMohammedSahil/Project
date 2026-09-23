@@ -36,6 +36,10 @@ body, .gradio-container {
     padding: 16px 20px !important;
 }
 
+footer {
+    display: none !important;
+}
+
 /* Glassmorphism Containers */
 .glass-panel {
     background: var(--bg-card) !important;

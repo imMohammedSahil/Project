@@ -29,14 +29,6 @@ from ui_components import (
 # Core Workflow Controllers
 # ---------------------------------------------------------------------------
 
-def handle_preset_selection(selected_label: str):
-    if not selected_label:
-        return ""
-    for item in SAMPLE_IDEAS:
-        if item["title"] in selected_label:
-            return item["description"]
-    return SAMPLE_IDEAS[0]["description"]
-
 def inspect_cluster_node(selected_cluster: str, session_state: dict, all_papers_list: list):
     """Deep-dives into a specific research direction node."""
     if not selected_cluster or not all_papers_list:
@@ -56,11 +48,9 @@ def inspect_cluster_node(selected_cluster: str, session_state: dict, all_papers_
     deep_dive_html = render_node_deep_dive(selected_cluster, connection_info, gaps, cluster_papers)
     return deep_dive_html
 
-def analyze_and_explore_research(user_idea: str, context_text: str):
+def analyze_and_explore_research(user_idea: str):
     """Primary pipeline: AI Interpretation -> Academic Search -> Graph & Saturation."""
     full_text = user_idea.strip()
-    if context_text and context_text.strip():
-        full_text += f"\n\nAdditional Context:\n{context_text.strip()}"
 
     if not full_text:
         return (
@@ -158,8 +148,6 @@ def clear_system_cache():
 # ---------------------------------------------------------------------------
 
 def build_app():
-    preset_choices = [f"{i+1}. {item['title']} ({item['domain']})" for i, item in enumerate(SAMPLE_IDEAS)]
-    
     with gr.Blocks(title="Research Scope AI - Academic Landscape & Scope Synthesizer", css=CUSTOM_CSS) as demo:
         # State stores
         session_state = gr.State({})
@@ -181,23 +169,6 @@ def build_app():
                 value=SAMPLE_IDEAS[0]["description"],
                 show_label=False
             )
-
-            with gr.Row():
-                with gr.Column(scale=8):
-                    preset_dropdown = gr.Dropdown(
-                        label="Load Curated Benchmark Topic Preset",
-                        choices=preset_choices,
-                        value=preset_choices[0],
-                        interactive=True
-                    )
-                with gr.Column(scale=4):
-                    with gr.Accordion("Additional Proposal Notes / Constraints (Optional)", open=False):
-                        context_input = gr.Textbox(
-                            label="Context Notes",
-                            placeholder="Paste draft notes, baseline model names, target datasets, or hardware constraints...",
-                            lines=2,
-                            show_label=False
-                        )
 
             explore_btn = gr.Button("EXPLORE RESEARCH LANDSCAPE", variant="primary", elem_classes=["primary-btn"], size="lg")
 
@@ -293,15 +264,9 @@ def build_app():
         # -------------------------------------------------------------------
         # Event Wire-ups
         # -------------------------------------------------------------------
-        preset_dropdown.change(
-            fn=handle_preset_selection,
-            inputs=[preset_dropdown],
-            outputs=[idea_input]
-        )
-
         explore_btn.click(
             fn=analyze_and_explore_research,
-            inputs=[idea_input, context_input],
+            inputs=[idea_input],
             outputs=[
                 dashboard_section,
                 concept_output,
@@ -351,4 +316,9 @@ def build_app():
 demo = build_app()
 
 if __name__ == "__main__":
-    demo.launch(server_name="127.0.0.1", server_port=7860, share=False)
+    demo.launch(
+        server_name="127.0.0.1",
+        server_port=7860,
+        share=False,
+        footer_links=[],
+    )
