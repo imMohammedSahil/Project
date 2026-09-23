@@ -59,18 +59,22 @@ Open your browser at `http://127.0.0.1:7860`.
 
 ## 🎓 Running in Google Colab (For Faculty Presentation)
 
-We provide a self-contained, 1-click notebook `Research_Scope_AI_Colab.ipynb`:
+We provide a ready-to-run notebook `Research_Scope_AI_Colab.ipynb`:
 
-1. Upload `Research_Scope_AI_Colab.ipynb` to [Google Colab](https://colab.research.google.com/).
-2. Run the first cell to install dependencies:
+1. Open the notebook in [Google Colab](https://colab.research.google.com/).
+2. Run the setup cell. It clones the current project from [GitHub](https://github.com/imMohammedSahil/Project) and installs dependencies:
    ```python
-   !pip install -q gradio groq plotly networkx pandas requests sentence-transformers
+   !git clone -q https://github.com/imMohammedSahil/Project.git /content/Project
+   %cd /content/Project
+   !pip install -q -r requirements.txt
    ```
-3. Run the application cell:
+3. Optionally enter a Groq API key when prompted. Leave it blank to use the local fallback.
+4. Run the launch cell and open the generated public Gradio URL:
    ```python
+   demo = build_app()
    demo.launch(share=True, debug=True)
    ```
-4. Click the generated **Public Gradio URL** (`https://...gradio.live`) to present the live interface to your faculty directly from Google Colab!
+5. Click the generated **Public Gradio URL** (`https://...gradio.live`) to present the live interface to your faculty directly from Google Colab.
 
 ---
 
