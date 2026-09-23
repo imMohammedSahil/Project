@@ -33,9 +33,25 @@ body, .gradio-container {
         #050308 !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     color: var(--text-main) !important;
-    max-width: 1440px !important;
-    margin: 0 auto !important;
-    padding: 16px 20px !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 10px 18px !important;
+    box-sizing: border-box !important;
+}
+
+.gradio-container > .main,
+.gradio-container .main,
+.gradio-container .contain,
+.gradio-container .contain > .block {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.gradio-container .main {
+    padding: 0 !important;
 }
 
 footer {
@@ -637,8 +653,8 @@ footer {
 }
 
 .dashboard-shell {
-    width: min(100%, 1420px) !important;
-    max-width: 1420px !important;
+    width: 100% !important;
+    max-width: none !important;
     margin: 0 auto !important;
     padding: 0 12px 32px !important;
 }
