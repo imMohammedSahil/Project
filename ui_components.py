@@ -620,6 +620,46 @@ footer {
     backdrop-filter: blur(10px);
 }
 
+.input-screen {
+    width: min(100%, 1080px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.input-screen > .block {
+    background: transparent !important;
+}
+
+.input-studio-heading {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 14px;
+    padding: 24px 28px 21px;
+    border: 1px solid rgba(129, 140, 248, 0.22);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.14), transparent 29%),
+        linear-gradient(135deg, rgba(20, 28, 59, 0.92), rgba(11, 19, 37, 0.96));
+    box-shadow: 0 12px 30px rgba(2, 6, 23, 0.22), inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.input-studio-heading::after {
+    content: "";
+    position: absolute;
+    right: 7%;
+    top: -85px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(165, 180, 252, 0.14);
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(165, 180, 252, 0.03), 0 0 0 36px rgba(165, 180, 252, 0.02);
+    pointer-events: none;
+}
+
 .input-command-studio {
     position: relative;
     overflow: hidden;

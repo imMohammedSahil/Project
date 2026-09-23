@@ -159,15 +159,15 @@ def build_app():
         # ===================================================================
         # STAGE 1: HERO RESEARCH HYPOTHESIS COMMAND STUDIO
         # ===================================================================
-        with gr.Group(elem_classes=["input-command-studio"]) as input_section:
+        with gr.Column(elem_classes=["input-screen"]) as input_section:
             gr.HTML(render_hero_header())
             gr.HTML(
                 """
-                <div class="input-studio-heading">
+                <section class="input-studio-heading">
                     <div class="input-studio-eyebrow">YOUR RESEARCH COMMAND CENTER <span></span> STEP 01</div>
-                    <div class="input-studio-title">Describe the question you want to <em>make discoverable.</em></div>
-                    <div class="input-studio-copy">Start with a rough hypothesis, a problem statement, or a research direction. The engine will turn it into an evidence-backed landscape.</div>
-                </div>
+                    <h2 class="input-studio-title">Describe the question you want to <em>make discoverable.</em></h2>
+                    <p class="input-studio-copy">Start with a rough hypothesis, a problem statement, or a research direction. The engine will turn it into an evidence-backed landscape.</p>
+                </section>
                 """
             )
             with gr.Group(elem_classes=["research-input-shell"]):
