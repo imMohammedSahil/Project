@@ -145,8 +145,12 @@ class SaturationEngine:
         fig.add_vline(x=0.5, line_dash="dash", line_color="rgba(148, 163, 184, 0.4)", line_width=1)
 
         fig.update_layout(
-            title="<b>Research Landscape: Scope Potential × Research Saturation</b>",
-            title_font=dict(color="#F8FAFC", size=16),
+            title=dict(
+                text="<b>Decision landscape</b>",
+                font=dict(color="#F8FAFC", size=15, family="Outfit"),
+                x=0.03,
+                xanchor="left",
+            ),
             xaxis=dict(
                 title="<b>Scope Potential (Novelty & Feasibility)</b>",
                 title_font=dict(color="#CBD5E1"),
@@ -164,8 +168,13 @@ class SaturationEngine:
             template="plotly_dark",
             paper_bgcolor="#0B0F19",
             plot_bgcolor="#0F172A",
-            margin=dict(l=60, r=40, t=60, b=60),
-            height=460
+            margin=dict(l=60, r=40, t=52, b=60),
+            height=470,
+            hoverlabel=dict(
+                bgcolor="#111C35",
+                bordercolor="#475569",
+                font=dict(color="#F8FAFC", family="Inter", size=12),
+            ),
         )
         return fig
 
@@ -188,8 +197,12 @@ class SaturationEngine:
             ))
 
         fig.update_layout(
-            title="<b>Publication Activity & Growth Velocity (2019 – 2026)</b>",
-            title_font=dict(color="#F8FAFC", size=15),
+            title=dict(
+                text="<b>Publication momentum</b>",
+                font=dict(color="#F8FAFC", size=15, family="Outfit"),
+                x=0.03,
+                xanchor="left",
+            ),
             xaxis=dict(
                 title="Publication Year",
                 tickmode="linear",
@@ -208,7 +221,12 @@ class SaturationEngine:
             plot_bgcolor="#0F172A",
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, font=dict(color="#CBD5E1")),
             margin=dict(l=50, r=30, t=60, b=50),
-            height=340
+            height=370,
+            hoverlabel=dict(
+                bgcolor="#111C35",
+                bordercolor="#475569",
+                font=dict(color="#F8FAFC", family="Inter", size=12),
+            ),
         )
         return fig
 

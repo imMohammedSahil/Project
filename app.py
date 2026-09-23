@@ -162,17 +162,27 @@ def build_app():
         # ===================================================================
         # STAGE 1: HERO RESEARCH HYPOTHESIS COMMAND STUDIO
         # ===================================================================
-        with gr.Group() as input_section:
-            gr.Markdown("<div style='font-size:14px; font-weight:800; color:#F8FAFC; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;'>Describe Your Research Idea or Hypothesis</div>")
+        with gr.Group(elem_classes=["input-command-studio"]) as input_section:
+            gr.HTML(
+                """
+                <div class="input-studio-heading">
+                    <div class="input-studio-eyebrow">YOUR RESEARCH COMMAND CENTER <span></span> STEP 01</div>
+                    <div class="input-studio-title">Describe the question you want to <em>make discoverable.</em></div>
+                    <div class="input-studio-copy">Start with a rough hypothesis, a problem statement, or a research direction. The engine will turn it into an evidence-backed landscape.</div>
+                </div>
+                """
+            )
             idea_input = gr.Textbox(
                 label="Describe Your Proposed Research Area",
                 placeholder="e.g. I want to make an AI system that can detect fake websites and phishing attacks using URL lexical semantics, HTML structural elements, and webpage screenshots with explainable attention maps.",
                 lines=5,
                 value=SAMPLE_IDEAS[0]["description"],
-                show_label=False
+                show_label=False,
+                elem_classes=["research-idea-input"],
             )
 
-            explore_btn = gr.Button("EXPLORE RESEARCH LANDSCAPE", variant="primary", elem_classes=["primary-btn"], size="lg")
+            gr.HTML("<div class='input-studio-hint'><span>⌁</span> Be specific about the problem, data, method, or outcome you want to explore.</div>")
+            explore_btn = gr.Button("EXPLORE RESEARCH LANDSCAPE  →", variant="primary", elem_classes=["primary-btn", "explore-command-btn"], size="lg")
 
         # ===================================================================
         # STAGE 2: TABBED INTELLIGENCE DASHBOARD (REVEALED ON EXPLORE)
@@ -257,11 +267,37 @@ def build_app():
                 # TAB 3: SATURATION MATRIX & TIMELINE
                 # -----------------------------------------------------------
                 with gr.TabItem("Saturation Matrix & Activity Timeline", id="tab_saturation"):
-                    with gr.Row():
-                        with gr.Column(scale=6):
-                            matrix_plot = gr.Plot(label="Scope Potential vs Literature Saturation Index")
-                        with gr.Column(scale=6):
-                            timeline_plot = gr.Plot(label="Publication Activity Timeline (2019-2026)")
+                    gr.HTML(
+                        """
+                        <div class="saturation-hero">
+                            <div class="saturation-kicker">INTELLIGENCE LAYER 03 <span></span> LANDSCAPE SIGNALS</div>
+                            <div class="saturation-title">Find the space where <em>opportunity compounds.</em></div>
+                            <div class="saturation-subtitle">Balance research relevance against literature saturation, then use publication velocity to choose a direction with room to contribute.</div>
+                        </div>
+                        """
+                    )
+                    gr.HTML(
+                        """
+                        <div class="saturation-guide">
+                            <div class="saturation-guide-item"><span class="signal-dot signal-dot-opportunity"></span><div><b>Opportunity space</b><small>High scope potential with lower saturation</small></div></div>
+                            <div class="saturation-guide-item"><span class="signal-dot signal-dot-active"></span><div><b>Active frontier</b><small>Strong relevance and growing attention</small></div></div>
+                            <div class="saturation-guide-item"><span class="signal-dot signal-dot-maturity"></span><div><b>Saturation signal</b><small>Volume and citation density are elevated</small></div></div>
+                        </div>
+                        """
+                    )
+                    with gr.Row(elem_classes=["saturation-chart-grid"]):
+                        with gr.Column(scale=7, elem_classes=["saturation-chart-card", "saturation-matrix-card"]):
+                            gr.HTML("<div class='saturation-card-kicker'>DECISION MAP <span>01</span></div><div class='saturation-card-title'>Scope potential × saturation</div><div class='saturation-card-copy'>Each node represents a research direction. Larger nodes indicate more anchor papers.</div>")
+                            matrix_plot = gr.Plot(
+                                label="Scope Potential vs Literature Saturation Index",
+                                elem_classes=["saturation-plot"],
+                            )
+                        with gr.Column(scale=5, elem_classes=["saturation-chart-card", "saturation-timeline-card"]):
+                            gr.HTML("<div class='saturation-card-kicker'>MOMENTUM TRACKER <span>02</span></div><div class='saturation-card-title'>Publication activity</div><div class='saturation-card-copy'>Track how attention has moved across the literature from 2019 to 2026.</div>")
+                            timeline_plot = gr.Plot(
+                                label="Publication Activity Timeline (2019-2026)",
+                                elem_classes=["saturation-plot"],
+                            )
 
                 # -----------------------------------------------------------
                 # TAB 4: AUTONOMOUS RESEARCH SCOPE PROPOSAL
