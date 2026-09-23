@@ -1385,6 +1385,147 @@ textarea:focus, input[type="text"]:focus {
     font-size: 13px;
 }
 
+/* Direction review content */
+.direction-review {
+    display: grid;
+    gap: 14px;
+}
+
+.direction-summary-card,
+.direction-papers-card {
+    padding: 18px !important;
+}
+
+.direction-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(192, 132, 252, 0.14);
+}
+
+.direction-title {
+    margin: 0;
+    color: #F8FAFC;
+    font: 800 20px/1.2 'Outfit', sans-serif;
+    letter-spacing: -0.2px;
+}
+
+.direction-title-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #A78BFA;
+    font: 700 9px 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.direction-paper-count {
+    flex: 0 0 auto;
+    margin: 0 !important;
+}
+
+.direction-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 10px;
+    color: #F3E8FF;
+    font: 700 13px 'Outfit', sans-serif;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.direction-section-number {
+    color: #E879F9;
+    font: 700 10px 'JetBrains Mono', monospace;
+}
+
+.direction-connection-card {
+    margin-top: 16px;
+    padding: 15px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(126, 34, 206, 0.16), rgba(18, 8, 32, 0.68));
+}
+
+.direction-connection-summary {
+    margin: 0 0 14px;
+    color: #E9D5FF;
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+.direction-fact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.direction-fact {
+    padding: 10px 11px;
+    border: 1px solid rgba(192, 132, 252, 0.14);
+    border-radius: 8px;
+    background: rgba(10, 4, 18, 0.42);
+    color: #C4B5FD;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.direction-fact b {
+    display: block;
+    margin-bottom: 4px;
+    color: #8B7AA8;
+    font: 700 9px 'JetBrains Mono', monospace;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.direction-fact-differentiator {
+    grid-column: 1 / -1;
+    border-color: rgba(232, 121, 249, 0.2);
+    color: #F5D0FE;
+}
+
+.direction-gaps {
+    margin-top: 18px;
+}
+
+.direction-gap-list {
+    display: grid;
+    gap: 8px;
+}
+
+.direction-papers-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 11px;
+}
+
+.direction-papers-heading small {
+    color: #8B7AA8;
+    font: 500 10px 'JetBrains Mono', monospace;
+}
+
+@media (max-width: 700px) {
+    .direction-title-row,
+    .direction-papers-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .direction-fact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .direction-fact-differentiator {
+        grid-column: auto;
+    }
+}
+
 @media (max-width: 700px) {
     .concept-fact-grid {
         grid-template-columns: 1fr;
@@ -1472,7 +1613,7 @@ def render_node_deep_dive(cluster_name: str, connection_info: Dict[str, Any], ga
     for g in gaps:
         badge_cls = "badge-paper" if g["type"] == "From Paper" else "badge-inferred"
         gaps_html += f"""
-        <div class="deep-dive-gap-card" style="border-left-color:{'#10B981' if g['type']=='From Paper' else '#8B5CF6'};">
+        <div class="deep-dive-gap-card" style="border-left-color:{'#D946EF' if g['type']=='From Paper' else '#A855F7'};">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                 <span class="badge-tag {badge_cls}">[{'PUBLISHED LITERATURE' if g['type']=='From Paper' else 'AI-SYNTHESIZED'}]</span>
                 <span style="font-size:11px; color:#94A3B8;">Anchor: {g.get('source', 'Literature')}</span>
@@ -1498,29 +1639,37 @@ def render_node_deep_dive(cluster_name: str, connection_info: Dict[str, Any], ga
         """
 
     return f"""
-    <div style="margin-top:8px;">
-        <div class="glass-panel deep-dive-summary-card" style="margin-bottom:14px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                <h2 style="font-family:'Outfit'; font-size:18px; color:#F8FAFC; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Direction: {cluster_name}</h2>
-                <span class="badge-tag badge-domain">{len(papers)} Anchor Papers</span>
+    <div class="direction-review">
+        <div class="glass-panel direction-summary-card">
+            <div class="direction-title-row">
+                <div>
+                    <span class="direction-title-label">Selected research direction</span>
+                    <h2 class="direction-title">{cluster_name}</h2>
+                </div>
+                <span class="badge-tag badge-domain direction-paper-count">{len(papers)} ANCHOR PAPERS</span>
             </div>
             
-            <div class="deep-dive-connection-card">
-                <div style="font-family:'Outfit'; font-size:12px; font-weight:700; color:#A5B4FC; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.4px;">Connection to Your Proposed Research</div>
-                <div style="font-size:12.5px; color:#E2E8F0; margin-bottom:8px; line-height:1.5;">{connection_info.get('connection_summary', '')}</div>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:11.5px; color:#94A3B8;">
-                    <div><b>Shared Problem:</b> {connection_info.get('shared_problem', '')}</div>
-                    <div><b>Shared Technique:</b> {connection_info.get('shared_technique', '')}</div>
-                    <div style="grid-column:1 / -1; color:#38BDF8;"><b>Key Differentiator:</b> {connection_info.get('key_difference', '')}</div>
+            <div class="direction-connection-card">
+                <div class="direction-section-heading"><span class="direction-section-number">01</span> Connection to your proposed research</div>
+                <p class="direction-connection-summary">{connection_info.get('connection_summary', '')}</p>
+                <div class="direction-fact-grid">
+                    <div class="direction-fact"><b>Shared problem</b>{connection_info.get('shared_problem', '')}</div>
+                    <div class="direction-fact"><b>Shared technique</b>{connection_info.get('shared_technique', '')}</div>
+                    <div class="direction-fact direction-fact-differentiator"><b>Key differentiator</b>{connection_info.get('key_difference', '')}</div>
                 </div>
             </div>
 
-            <div class="deep-dive-section-label"><span>02</span> Identified Literature Gaps & Limitations</div>
-            {gaps_html}
+            <div class="direction-gaps">
+                <div class="direction-section-heading"><span class="direction-section-number">02</span> Identified literature gaps & limitations</div>
+                <div class="direction-gap-list">{gaps_html}</div>
+            </div>
         </div>
 
-        <div style="margin-top:14px;">
-            <h3 class="deep-dive-section-label"><span>03</span> Peer-Reviewed Papers <small>{len(papers)} anchors</small></h3>
+        <div class="glass-panel direction-papers-card">
+            <div class="direction-papers-heading">
+                <h3 class="deep-dive-section-label"><span>03</span> Peer-reviewed papers</h3>
+                <small>{len(papers)} verified literature anchors</small>
+            </div>
             {papers_html}
         </div>
     </div>
