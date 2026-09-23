@@ -40,6 +40,110 @@ footer {
     display: none !important;
 }
 
+/* Semantic decomposition and knowledge graph tab */
+.graph-tab-hero {
+    position: relative;
+    overflow: hidden;
+    margin: 4px 0 16px;
+    padding: 22px 26px;
+    border: 1px solid rgba(129, 140, 248, 0.22);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 88% 20%, rgba(14, 165, 233, 0.16), transparent 28%),
+        radial-gradient(circle at 12% 110%, rgba(99, 102, 241, 0.18), transparent 34%),
+        linear-gradient(110deg, rgba(15, 23, 42, 0.98), rgba(24, 31, 63, 0.92));
+    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.24), inset 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.graph-tab-hero::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: 7%;
+    top: -108px;
+    border: 1px solid rgba(165, 180, 252, 0.18);
+    border-radius: 50%;
+    box-shadow: 0 0 0 22px rgba(165, 180, 252, 0.035), 0 0 0 44px rgba(165, 180, 252, 0.025);
+}
+
+.graph-tab-kicker {
+    position: relative;
+    z-index: 1;
+    color: #67E8F9;
+    font: 700 10px/1.2 'JetBrains Mono', monospace;
+    letter-spacing: 1.6px;
+}
+
+.graph-tab-kicker span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0 8px 2px;
+    border-radius: 50%;
+    background: #34D399;
+    box-shadow: 0 0 10px #34D399;
+}
+
+.graph-tab-title {
+    position: relative;
+    z-index: 1;
+    margin-top: 9px;
+    color: #F8FAFC;
+    font: 800 25px/1.15 'Outfit', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.graph-tab-title em {
+    color: #A5B4FC;
+    font-style: normal;
+}
+
+.graph-tab-subtitle {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    margin-top: 8px;
+    color: #94A3B8;
+    font-size: 12.5px;
+    line-height: 1.55;
+}
+
+.graph-tab-grid {
+    gap: 16px !important;
+}
+
+.graph-tab-panel {
+    min-width: 0;
+    padding: 0 !important;
+}
+
+.graph-tab-panel > .block {
+    height: 100%;
+}
+
+.graph-visual-panel {
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(8, 15, 31, 0.98));
+    box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+}
+
+.knowledge-graph-plot {
+    padding: 6px !important;
+}
+
+.knowledge-graph-plot .wrap {
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .graph-tab-title {
+        font-size: 21px;
+    }
+}
+
 /* Glassmorphism Containers */
 .glass-panel {
     background: var(--bg-card) !important;

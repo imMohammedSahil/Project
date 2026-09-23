@@ -295,10 +295,15 @@ class ResearchGraphEngine:
 
         fig = go.Figure(data=[edge_trace, user_trace, cluster_trace, paper_trace])
         fig.update_layout(
-            title=dict(text="<b>Semantic Literature Knowledge Network</b>", font=dict(color="#F8FAFC", size=14)),
+            title=dict(
+                text="<b>KNOWLEDGE GRAPH</b><br><sup>Hover nodes to inspect evidence connections</sup>",
+                font=dict(color="#F8FAFC", size=15, family="Outfit"),
+                x=0.03,
+                xanchor="left",
+            ),
             template="plotly_dark",
             paper_bgcolor="#090D16",
-            plot_bgcolor="rgba(15, 23, 42, 0.75)",
+            plot_bgcolor="rgba(10, 18, 35, 0.86)",
             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             hovermode="closest",
@@ -310,8 +315,13 @@ class ResearchGraphEngine:
                 x=0.5,
                 font=dict(size=11, color="#94A3B8")
             ),
-            margin=dict(l=20, r=20, t=40, b=50),
-            height=490
+            margin=dict(l=12, r=12, t=58, b=52),
+            height=540,
+            hoverlabel=dict(
+                bgcolor="#111C35",
+                bordercolor="#475569",
+                font=dict(color="#F8FAFC", family="Inter", size=12),
+            ),
         )
         return fig
 
@@ -400,4 +410,3 @@ class ResearchGraphEngine:
 
 # Global graph engine instance
 graph_engine = ResearchGraphEngine()
-

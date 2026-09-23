@@ -183,12 +183,24 @@ def build_app():
                 # TAB 1: SEMANTIC DECOMPOSITION & KNOWLEDGE GRAPH
                 # -----------------------------------------------------------
                 with gr.TabItem("Semantic Decomposition & Knowledge Graph", id="tab_graph"):
-                    with gr.Row(equal_height=False):
-                        with gr.Column(scale=6):
-                            concept_output = gr.HTML()
+                    gr.HTML(
+                        """
+                        <div class="graph-tab-hero">
+                            <div class="graph-tab-kicker">INTELLIGENCE LAYER 01 <span></span> LIVE ANALYSIS</div>
+                            <div class="graph-tab-title">From research idea to a <em>connected evidence map.</em></div>
+                            <div class="graph-tab-subtitle">Explore how your hypothesis decomposes into academic concepts, research directions, and verified literature.</div>
+                        </div>
+                        """
+                    )
+                    with gr.Row(equal_height=False, elem_classes=["graph-tab-grid"]):
+                        with gr.Column(scale=6, elem_classes=["graph-tab-panel"]):
+                            concept_output = gr.HTML(elem_classes=["concept-output"])
 
-                        with gr.Column(scale=6):
-                            graph_output = gr.Plot(label="Semantic Literature Knowledge Network")
+                        with gr.Column(scale=6, elem_classes=["graph-tab-panel", "graph-visual-panel"]):
+                            graph_output = gr.Plot(
+                                label="Semantic Literature Knowledge Network",
+                                elem_classes=["knowledge-graph-plot"],
+                            )
 
                 # -----------------------------------------------------------
                 # TAB 2: DIRECTION DEEP-DIVE & PEER-REVIEWED LITERATURE
