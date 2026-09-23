@@ -123,7 +123,7 @@ class ResearchGraphEngine:
             title=f"Proposal: {user_idea[:160]}...",
             group="user",
             size=35,
-            color="#6366F1"
+            color="#A855F7"
         )
 
         cluster_summaries = {}
@@ -153,7 +153,7 @@ class ResearchGraphEngine:
                 size=24 + min(12, len(cat_papers) * 2),
                 similarity=sim_score,
                 paper_count=len(cat_papers),
-                color="#06B6D4"
+                color="#C084FC"
             )
 
             # Edge from User Idea to Cluster
@@ -181,7 +181,7 @@ class ResearchGraphEngine:
                     group="paper",
                     size=14 + min(8, p.citation_count // 20),
                     paper_data=p.to_dict(),
-                    color="#10B981"
+                    color="#E879F9"
                 )
 
                 # Edge from Cluster to Paper
@@ -191,7 +191,7 @@ class ResearchGraphEngine:
                     weight=p_sim,
                     label=f"{p_sim:.2f}",
                     value=max(1, int(p_sim * 4)),
-                    color={"color": "#34D399", "opacity": 0.6}
+                    color={"color": "#D946EF", "opacity": 0.6}
                 )
 
         return G, cluster_summaries
@@ -261,7 +261,7 @@ class ResearchGraphEngine:
             x=user_x, y=user_y,
             mode="markers+text",
             name="Research Hypothesis",
-            marker=dict(size=30, color="#6366F1", symbol="hexagon", line=dict(color="#A5B4FC", width=2)),
+            marker=dict(size=30, color="#A855F7", symbol="hexagon", line=dict(color="#E9D5FF", width=2)),
             text=user_text,
             textposition="top center",
             textfont=dict(color="#FFFFFF", size=12, family="Inter"),
@@ -273,7 +273,7 @@ class ResearchGraphEngine:
             x=cluster_x, y=cluster_y,
             mode="markers+text",
             name="Research Direction",
-            marker=dict(size=22, color="#0284C7", symbol="circle", line=dict(color="#38BDF8", width=2)),
+            marker=dict(size=22, color="#7C3AED", symbol="circle", line=dict(color="#C084FC", width=2)),
             text=cluster_text,
             textposition="bottom center",
             textfont=dict(color="#7DD3FC", size=11, family="Inter"),
@@ -285,7 +285,7 @@ class ResearchGraphEngine:
             x=paper_x, y=paper_y,
             mode="markers+text",
             name="Peer-Reviewed Paper",
-            marker=dict(size=13, color="#059669", symbol="square", line=dict(color="#34D399", width=1.5)),
+            marker=dict(size=13, color="#D946EF", symbol="square", line=dict(color="#F0ABFC", width=1.5)),
             text=paper_text,
             textposition="top center",
             textfont=dict(color="#A7F3D0", size=10, family="Inter"),
@@ -302,8 +302,8 @@ class ResearchGraphEngine:
                 xanchor="left",
             ),
             template="plotly_dark",
-            paper_bgcolor="#090D16",
-            plot_bgcolor="rgba(10, 18, 35, 0.86)",
+            paper_bgcolor="#050308",
+            plot_bgcolor="rgba(16, 7, 25, 0.9)",
             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             hovermode="closest",

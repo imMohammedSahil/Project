@@ -12,23 +12,25 @@ CUSTOM_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-    --bg-primary: #090D16;
-    --bg-secondary: #0F172A;
-    --bg-card: rgba(15, 23, 42, 0.75);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-highlight: rgba(99, 102, 241, 0.4);
-    --accent-indigo: #6366F1;
-    --accent-cyan: #0EA5E9;
-    --accent-emerald: #10B981;
-    --accent-purple: #8B5CF6;
-    --accent-rose: #F43F5E;
+    --bg-primary: #050308;
+    --bg-secondary: #100719;
+    --bg-card: rgba(18, 8, 32, 0.82);
+    --border-color: rgba(192, 132, 252, 0.16);
+    --border-highlight: rgba(168, 85, 247, 0.52);
+    --accent-indigo: #8B5CF6;
+    --accent-cyan: #C084FC;
+    --accent-emerald: #D946EF;
+    --accent-purple: #A855F7;
+    --accent-rose: #F0ABFC;
     --text-main: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
+    --text-secondary: #C4B5FD;
+    --text-muted: #8B7AA8;
 }
 
 body, .gradio-container {
-    background-color: var(--bg-primary) !important;
+    background:
+        radial-gradient(circle at 50% -20%, rgba(126, 34, 206, 0.18), transparent 38%),
+        #050308 !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     color: var(--text-main) !important;
     max-width: 1440px !important;
@@ -634,6 +636,31 @@ footer {
     background: transparent !important;
 }
 
+.dashboard-shell {
+    width: min(100%, 1420px) !important;
+    max-width: 1420px !important;
+    margin: 0 auto !important;
+    padding: 0 12px 32px !important;
+}
+
+.dashboard-shell > .block,
+.dashboard-shell .tabs,
+.dashboard-shell .tabitem,
+.dashboard-shell .tabitem > .block {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.dashboard-shell .tab-nav {
+    width: 100% !important;
+}
+
+.dashboard-shell .graph-tab-hero,
+.dashboard-shell .deep-dive-hero,
+.dashboard-shell .saturation-hero {
+    width: 100%;
+}
+
 .input-studio-heading {
     position: relative;
     overflow: hidden;
@@ -1022,13 +1049,13 @@ textarea:focus, input[type="text"]:focus {
 }
 
 .primary-btn {
-    background: linear-gradient(135deg, #4F46E5 0%, #6366F1 50%, #0EA5E9 100%) !important;
+    background: linear-gradient(135deg, #6D28D9 0%, #A855F7 48%, #E879F9 100%) !important;
     color: #FFFFFF !important;
     font-weight: 700 !important;
     letter-spacing: 0.3px !important;
     border: none !important;
     border-radius: 8px !important;
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35) !important;
+    box-shadow: 0 4px 18px rgba(168, 85, 247, 0.42) !important;
     transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 
@@ -1058,7 +1085,7 @@ textarea:focus, input[type="text"]:focus {
 
 .primary-btn:hover {
     transform: translateY(-2px) scale(1.005) !important;
-    box-shadow: 0 10px 28px rgba(99, 102, 241, 0.5), 0 0 22px rgba(14, 165, 233, 0.18) !important;
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.58), 0 0 26px rgba(232, 121, 249, 0.2) !important;
 }
 
 .primary-btn:active {
@@ -1067,8 +1094,8 @@ textarea:focus, input[type="text"]:focus {
 
 /* Modern Tabs */
 .tab-nav {
-    background: rgba(15, 23, 42, 0.6) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(18, 8, 32, 0.78) !important;
+    border: 1px solid rgba(192, 132, 252, 0.18) !important;
     border-radius: 10px !important;
     padding: 6px !important;
     gap: 6px !important;
@@ -1088,21 +1115,21 @@ textarea:focus, input[type="text"]:focus {
 
 .tab-nav button:hover {
     color: #F8FAFC !important;
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: rgba(168, 85, 247, 0.12) !important;
 }
 
 .tab-nav button.selected {
-    background: rgba(99, 102, 241, 0.22) !important;
+    background: linear-gradient(135deg, rgba(126, 34, 206, 0.32), rgba(217, 70, 239, 0.18)) !important;
     color: #FFFFFF !important;
-    border: 1px solid rgba(99, 102, 241, 0.45) !important;
-    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25) !important;
+    border: 1px solid rgba(192, 132, 252, 0.48) !important;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.28) !important;
 }
 
 /* Accordion Styling */
 .gr-accordion {
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(192, 132, 252, 0.18) !important;
     border-radius: 8px !important;
-    background: rgba(15, 23, 42, 0.4) !important;
+    background: rgba(18, 8, 32, 0.52) !important;
 }
 """
 

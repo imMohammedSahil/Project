@@ -105,8 +105,8 @@ class SaturationEngine:
         quadrant_font = dict(size=10, family="Inter")
         fig.add_annotation(x=0.25, y=0.94, text="<b>SATURATED BASELINE</b>", showarrow=False, font=dict(color="#F87171", **quadrant_font))
         fig.add_annotation(x=0.75, y=0.94, text="<b>COMPETITIVE FRONTIER</b>", showarrow=False, font=dict(color="#FBBF24", **quadrant_font))
-        fig.add_annotation(x=0.75, y=0.06, text="<b>HIGH OPPORTUNITY</b>", showarrow=False, font=dict(color="#34D399", **quadrant_font))
-        fig.add_annotation(x=0.25, y=0.06, text="<b>EMERGING NICHE</b>", showarrow=False, font=dict(color="#818CF8", **quadrant_font))
+        fig.add_annotation(x=0.75, y=0.06, text="<b>HIGH OPPORTUNITY</b>", showarrow=False, font=dict(color="#E879F9", **quadrant_font))
+        fig.add_annotation(x=0.25, y=0.06, text="<b>EMERGING NICHE</b>", showarrow=False, font=dict(color="#C084FC", **quadrant_font))
 
         # Plot cluster points
         x_vals = [m.scope_potential for m in metrics_list]
@@ -170,7 +170,7 @@ class SaturationEngine:
             ),
             template="plotly_dark",
             paper_bgcolor="#0B0F19",
-            plot_bgcolor="#0F172A",
+            plot_bgcolor="#100719",
             margin=dict(l=62, r=34, t=48, b=54),
             height=470,
             hoverlabel=dict(
@@ -186,7 +186,7 @@ class SaturationEngine:
         fig = go.Figure()
         years = list(range(2019, 2027))
 
-        colors = ["#6366F1", "#06B6D4", "#10B981", "#F59E0B", "#EC4899", "#8B5CF6"]
+        colors = ["#A855F7", "#C084FC", "#E879F9", "#D946EF", "#F0ABFC", "#7C3AED"]
 
         for idx, m in enumerate(metrics_list):
             y_counts = [m.yearly_distribution.get(yr, 0) for yr in years]
@@ -221,7 +221,7 @@ class SaturationEngine:
             ),
             template="plotly_dark",
             paper_bgcolor="#0B0F19",
-            plot_bgcolor="#0F172A",
+            plot_bgcolor="#100719",
             legend=dict(
                 orientation="h",
                 yanchor="top",
