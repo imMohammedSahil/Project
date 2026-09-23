@@ -671,6 +671,64 @@ footer {
     width: 100% !important;
 }
 
+.dashboard-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 5px 0 18px;
+    padding: 11px 15px;
+    border: 1px solid rgba(192, 132, 252, 0.18);
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(18, 8, 32, 0.9), rgba(29, 12, 52, 0.72));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.05), 0 8px 20px rgba(2, 0, 8, 0.22);
+}
+
+.dashboard-identity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-orb {
+    width: 9px;
+    height: 9px;
+    border: 2px solid #E879F9;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(232, 121, 249, 0.9);
+}
+
+.dashboard-identity b {
+    display: block;
+    color: #F3E8FF;
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.dashboard-identity small {
+    display: block;
+    margin-top: 3px;
+    color: #8B7AA8;
+    font-size: 10px;
+}
+
+.dashboard-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #D8B4FE;
+    font: 700 9px 'JetBrains Mono', monospace;
+    letter-spacing: 0.8px;
+}
+
+.dashboard-status span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #D946EF;
+    box-shadow: 0 0 9px #D946EF;
+}
+
 .dashboard-shell .graph-tab-hero,
 .dashboard-shell .deep-dive-hero,
 .dashboard-shell .saturation-hero {
@@ -1110,23 +1168,31 @@ textarea:focus, input[type="text"]:focus {
 
 /* Modern Tabs */
 .tab-nav {
-    background: rgba(18, 8, 32, 0.78) !important;
-    border: 1px solid rgba(192, 132, 252, 0.18) !important;
-    border-radius: 10px !important;
-    padding: 6px !important;
-    gap: 6px !important;
+    display: flex !important;
+    align-items: stretch !important;
+    background: rgba(10, 4, 18, 0.92) !important;
+    border: 1px solid rgba(168, 85, 247, 0.28) !important;
+    border-radius: 13px !important;
+    padding: 5px !important;
+    gap: 5px !important;
     margin-bottom: 18px !important;
+    box-shadow: 0 10px 24px rgba(2, 0, 8, 0.24), inset 0 1px rgba(255, 255, 255, 0.04) !important;
 }
 
 .tab-nav button {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
     border-radius: 8px !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    color: #94A3B8 !important;
-    padding: 8px 18px !important;
+    font-weight: 650 !important;
+    font-size: 11px !important;
+    color: #8B7AA8 !important;
+    padding: 11px 12px !important;
     border: 1px solid transparent !important;
     transition: all 0.2s ease !important;
     font-family: 'Inter', sans-serif !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
 .tab-nav button:hover {
@@ -1139,6 +1205,18 @@ textarea:focus, input[type="text"]:focus {
     color: #FFFFFF !important;
     border: 1px solid rgba(192, 132, 252, 0.48) !important;
     box-shadow: 0 4px 16px rgba(168, 85, 247, 0.28) !important;
+}
+
+@media (max-width: 900px) {
+    .dashboard-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .tab-nav button {
+        font-size: 10px !important;
+        padding: 10px 7px !important;
+    }
 }
 
 /* Accordion Styling */

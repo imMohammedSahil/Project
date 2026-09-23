@@ -202,19 +202,29 @@ def build_app():
         # ===================================================================
         # STAGE 2: TABBED INTELLIGENCE DASHBOARD (REVEALED ON EXPLORE)
         # ===================================================================
-        with gr.Column(visible=False) as dashboard_section:
+        with gr.Column(visible=False, elem_classes=["dashboard-shell"]) as dashboard_section:
             back_to_input_btn = gr.Button(
                 "← NEW RESEARCH IDEA",
                 variant="secondary",
                 elem_classes=["back-to-input-btn"],
             )
-            gr.HTML("<hr style='border:0; border-top:1px solid rgba(255,255,255,0.08); margin:24px 0;'>")
+            gr.HTML(
+                """
+                <div class="dashboard-topbar">
+                    <div class="dashboard-identity">
+                        <span class="dashboard-orb"></span>
+                        <div><b>RESEARCH SCOPE AI</b><small>Evidence intelligence workspace</small></div>
+                    </div>
+                    <div class="dashboard-status"><span></span> ANALYSIS SESSION ACTIVE</div>
+                </div>
+                """
+            )
 
             with gr.Tabs() as main_tabs:
                 # -----------------------------------------------------------
                 # TAB 1: SEMANTIC DECOMPOSITION & KNOWLEDGE GRAPH
                 # -----------------------------------------------------------
-                with gr.TabItem("Semantic Decomposition & Knowledge Graph", id="tab_graph"):
+                with gr.TabItem("01  ·  Semantic Map", id="tab_graph"):
                     gr.HTML(
                         """
                         <div class="graph-tab-hero">
@@ -237,7 +247,7 @@ def build_app():
                 # -----------------------------------------------------------
                 # TAB 2: DIRECTION DEEP-DIVE & PEER-REVIEWED LITERATURE
                 # -----------------------------------------------------------
-                with gr.TabItem("Direction Deep-Dive & Peer-Reviewed Literature", id="tab_deepdive"):
+                with gr.TabItem("02  ·  Direction Review", id="tab_deepdive"):
                     gr.HTML(
                         """
                         <div class="deep-dive-hero">
@@ -281,7 +291,7 @@ def build_app():
                 # -----------------------------------------------------------
                 # TAB 3: SATURATION MATRIX & TIMELINE
                 # -----------------------------------------------------------
-                with gr.TabItem("Saturation Matrix & Activity Timeline", id="tab_saturation"):
+                with gr.TabItem("03  ·  Saturation Signals", id="tab_saturation"):
                     gr.HTML(
                         """
                         <div class="saturation-hero">
@@ -317,7 +327,7 @@ def build_app():
                 # -----------------------------------------------------------
                 # TAB 4: AUTONOMOUS RESEARCH SCOPE PROPOSAL
                 # -----------------------------------------------------------
-                with gr.TabItem("Autonomous Research Scope Proposal & Exports", id="tab_scope"):
+                with gr.TabItem("04  ·  Scope Builder", id="tab_scope"):
                     with gr.Row():
                         with gr.Column(scale=4):
                             gr.Markdown("<div style='font-size:13px; font-weight:700; color:#F8FAFC; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;'>Formulate Proposal Scope</div>")
@@ -335,7 +345,7 @@ def build_app():
                 # -----------------------------------------------------------
                 # TAB 5: SYSTEM CONFIGURATION & CACHE
                 # -----------------------------------------------------------
-                with gr.TabItem("System Settings & Cache", id="tab_settings"):
+                with gr.TabItem("05  ·  System", id="tab_settings"):
                     with gr.Row():
                         with gr.Column(scale=6):
                             groq_key_input = gr.Textbox(
