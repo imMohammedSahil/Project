@@ -96,15 +96,15 @@ class SaturationEngine:
         fig = go.Figure()
 
         # Add quadrant background annotations & shapes
-        fig.add_shape(type="rect", x0=0.0, y0=0.5, x1=0.5, y1=1.0, fillcolor="rgba(239, 68, 68, 0.07)", line_width=0, layer="below")
-        fig.add_shape(type="rect", x0=0.5, y0=0.5, x1=1.0, y1=1.0, fillcolor="rgba(234, 179, 8, 0.07)", line_width=0, layer="below")
-        fig.add_shape(type="rect", x0=0.5, y0=0.0, x1=1.0, y1=0.5, fillcolor="rgba(16, 185, 129, 0.12)", line_width=0, layer="below")
-        fig.add_shape(type="rect", x0=0.0, y0=0.0, x1=0.5, y1=0.5, fillcolor="rgba(99, 102, 241, 0.07)", line_width=0, layer="below")
+        fig.add_shape(type="rect", x0=0.0, y0=0.5, x1=0.5, y1=1.0, fillcolor="rgba(217, 70, 239, 0.07)", line_width=0, layer="below")
+        fig.add_shape(type="rect", x0=0.5, y0=0.5, x1=1.0, y1=1.0, fillcolor="rgba(232, 121, 249, 0.07)", line_width=0, layer="below")
+        fig.add_shape(type="rect", x0=0.5, y0=0.0, x1=1.0, y1=0.5, fillcolor="rgba(34, 211, 238, 0.1)", line_width=0, layer="below")
+        fig.add_shape(type="rect", x0=0.0, y0=0.0, x1=0.5, y1=0.5, fillcolor="rgba(168, 85, 247, 0.07)", line_width=0, layer="below")
 
         # Add quadrant labels
         quadrant_font = dict(size=10, family="Inter")
-        fig.add_annotation(x=0.25, y=0.94, text="<b>SATURATED BASELINE</b>", showarrow=False, font=dict(color="#F87171", **quadrant_font))
-        fig.add_annotation(x=0.75, y=0.94, text="<b>COMPETITIVE FRONTIER</b>", showarrow=False, font=dict(color="#FBBF24", **quadrant_font))
+        fig.add_annotation(x=0.25, y=0.94, text="<b>SATURATED BASELINE</b>", showarrow=False, font=dict(color="#F0ABFC", **quadrant_font))
+        fig.add_annotation(x=0.75, y=0.94, text="<b>COMPETITIVE FRONTIER</b>", showarrow=False, font=dict(color="#E879F9", **quadrant_font))
         fig.add_annotation(x=0.75, y=0.06, text="<b>HIGH OPPORTUNITY</b>", showarrow=False, font=dict(color="#E879F9", **quadrant_font))
         fig.add_annotation(x=0.25, y=0.06, text="<b>EMERGING NICHE</b>", showarrow=False, font=dict(color="#C084FC", **quadrant_font))
 
@@ -129,10 +129,10 @@ class SaturationEngine:
             marker=dict(
                 size=[max(16, min(30, m.paper_count * 4)) for m in metrics_list],
                 color=y_vals,
-                colorscale="Viridis",
+                colorscale=[[0, "#7C3AED"], [0.5, "#D946EF"], [1, "#67E8F9"]],
                 showscale=True,
                 colorbar=dict(
-                    title=dict(text="Saturation", font=dict(size=10, color="#CBD5E1")),
+                    title=dict(text="Saturation", font=dict(size=10, color="#E9D5FF")),
                     thickness=10,
                     len=0.62,
                     tickfont=dict(color="#CBD5E1", size=9),
@@ -144,8 +144,8 @@ class SaturationEngine:
         ))
 
         # Crosshair lines at 0.5
-        fig.add_hline(y=0.5, line_dash="dash", line_color="rgba(148, 163, 184, 0.4)", line_width=1)
-        fig.add_vline(x=0.5, line_dash="dash", line_color="rgba(148, 163, 184, 0.4)", line_width=1)
+        fig.add_hline(y=0.5, line_dash="dash", line_color="rgba(192, 132, 252, 0.4)", line_width=1)
+        fig.add_vline(x=0.5, line_dash="dash", line_color="rgba(192, 132, 252, 0.4)", line_width=1)
 
         fig.update_layout(
             title=dict(
@@ -169,13 +169,13 @@ class SaturationEngine:
                 tickfont=dict(color="#94A3B8", size=9)
             ),
             template="plotly_dark",
-            paper_bgcolor="#0B0F19",
+            paper_bgcolor="#050308",
             plot_bgcolor="#100719",
             margin=dict(l=62, r=34, t=48, b=54),
             height=470,
             hoverlabel=dict(
-                bgcolor="#111C35",
-                bordercolor="#475569",
+                bgcolor="#180B2A",
+                bordercolor="#A855F7",
                 font=dict(color="#F8FAFC", family="Inter", size=12),
             ),
         )
@@ -220,7 +220,7 @@ class SaturationEngine:
                 tickfont=dict(color="#94A3B8")
             ),
             template="plotly_dark",
-            paper_bgcolor="#0B0F19",
+            paper_bgcolor="#050308",
             plot_bgcolor="#100719",
             legend=dict(
                 orientation="h",
@@ -229,15 +229,15 @@ class SaturationEngine:
                 xanchor="left",
                 x=0,
                 font=dict(color="#CBD5E1", size=9),
-                bgcolor="rgba(8, 15, 31, 0.7)",
-                bordercolor="rgba(148, 163, 184, 0.15)",
+                bgcolor="rgba(18, 8, 32, 0.78)",
+                bordercolor="rgba(192, 132, 252, 0.18)",
                 borderwidth=1,
             ),
             margin=dict(l=50, r=18, t=48, b=108),
             height=370,
             hoverlabel=dict(
-                bgcolor="#111C35",
-                bordercolor="#475569",
+                bgcolor="#180B2A",
+                bordercolor="#A855F7",
                 font=dict(color="#F8FAFC", family="Inter", size=12),
             ),
         )

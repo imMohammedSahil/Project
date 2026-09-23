@@ -32,7 +32,7 @@ from ui_components import (
 def inspect_cluster_node(selected_cluster: str, session_state: dict, all_papers_list: list):
     """Deep-dives into a specific research direction node."""
     if not selected_cluster or not all_papers_list:
-        return "<div style='color:#94A3B8; padding:16px; font-size:13px;'>Select a research direction from the dropdown above to view connection analysis and anchor papers.</div>"
+        return "<div style='color:#C4B5FD; padding:16px; font-size:13px;'>Select a research direction from the dropdown above to view connection analysis and anchor papers.</div>"
 
     user_idea = session_state.get("user_idea", "")
     cluster_papers = [p for p in all_papers_list if getattr(p, "cluster_label", "") == selected_cluster or selected_cluster in p.fields_of_study]
@@ -56,10 +56,10 @@ def analyze_and_explore_research(user_idea: str):
         return (
             gr.update(visible=True),
             gr.update(visible=False),
-            "<div style='color:#F87171; padding:12px;'>Please enter a research idea or select a preset to begin.</div>",
+            "<div style='color:#F0ABFC; padding:12px;'>Please enter a research idea or select a preset to begin.</div>",
             None,
             gr.update(choices=[]),
-            "<div style='color:#94A3B8; padding:12px;'>No active literature direction selected.</div>",
+            "<div style='color:#C4B5FD; padding:12px;'>No active literature direction selected.</div>",
             None,
             None,
             {},

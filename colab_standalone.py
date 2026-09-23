@@ -289,7 +289,7 @@ def generate_vis_html(G: nx.DiGraph) -> str:
     nodes = []
     for nid, d in G.nodes(data=True):
         grp = d.get("group", "paper")
-        col = "#6366F1" if grp == "user" else ("#0284C7" if grp == "cluster" else "#059669")
+        col = "#A855F7" if grp == "user" else ("#7C3AED" if grp == "cluster" else "#D946EF")
         shp = "hexagon" if grp == "user" else ("dot" if grp == "cluster" else "box")
         nodes.append({"id": nid, "label": d.get("label", nid), "title": d.get("title", ""), "value": d.get("size", 16), "color": col, "shape": shp, "font": {"color": "#FFF"}})
     
@@ -299,7 +299,7 @@ def generate_vis_html(G: nx.DiGraph) -> str:
 
     return f"""
     <!DOCTYPE html><html><head><script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
-    <style>body{{margin:0;background:#0B0F19;overflow:hidden;}}#net{{width:100%;height:560px;background:radial-gradient(#1E293B,#0B0F19);}}</style></head>
+    <style>body{{margin:0;background:#050308;overflow:hidden;}}#net{{width:100%;height:560px;background:radial-gradient(#24103D,#050308);}}</style></head>
     <body><div id="net"></div><script>
     var data = {{ nodes: new vis.DataSet({json.dumps(nodes)}), edges: new vis.DataSet({json.dumps(edges)}) }};
     var net = new vis.Network(document.getElementById('net'), data, {{ physics: {{ solver: 'forceAtlas2Based' }} }});
@@ -342,8 +342,8 @@ def calculate_saturation(cluster_name: str, papers: List[Paper], sim_to_user: fl
 
 def plot_saturation_matrix(metrics: List[SaturationMetrics]) -> go.Figure:
     fig = go.Figure()
-    fig.add_shape(type="rect", x0=0.5, y0=0.0, x1=1.0, y1=0.5, fillcolor="rgba(16, 185, 129, 0.15)", line_width=0, layer="below")
-    fig.add_annotation(x=0.75, y=0.1, text="<b>OPTIMAL SCOPE (HIGH OPPORTUNITY)</b>", showarrow=False, font=dict(color="#34D399", size=11))
+    fig.add_shape(type="rect", x0=0.5, y0=0.0, x1=1.0, y1=0.5, fillcolor="rgba(34, 211, 238, 0.12)", line_width=0, layer="below")
+    fig.add_annotation(x=0.75, y=0.1, text="<b>OPTIMAL SCOPE (HIGH OPPORTUNITY)</b>", showarrow=False, font=dict(color="#E879F9", size=11))
 
     fig.add_trace(go.Scatter(
         x=[m.scope_potential for m in metrics],
@@ -359,7 +359,7 @@ def plot_saturation_matrix(metrics: List[SaturationMetrics]) -> go.Figure:
         xaxis=dict(title="Scope Potential", range=[-0.05, 1.05]),
         yaxis=dict(title="Saturation Level", range=[-0.05, 1.05]),
         template="plotly_dark",
-        paper_bgcolor="#0B0F19",
+        paper_bgcolor="#050308",
         plot_bgcolor="#0F172A",
         height=420,
         margin=dict(l=40, r=40, t=50, b=40)
@@ -371,9 +371,9 @@ def plot_saturation_matrix(metrics: List[SaturationMetrics]) -> go.Figure:
 # -------------------------------------------------------------
 CUSTOM_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap');
-body, .gradio-container { background-color: #090D16 !important; font-family: 'Inter', sans-serif !important; color: #F8FAFC !important; max-width: 1400px !important; margin: 0 auto !important; }
+body, .gradio-container { background-color: #050308 !important; font-family: 'Inter', sans-serif !important; color: #F8FAFC !important; max-width: 1400px !important; margin: 0 auto !important; }
 .hero { background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(14,165,233,0.1)); padding: 22px 26px; border-radius: 12px; margin-bottom: 18px; border: 1px solid rgba(99,102,241,0.3); }
-.hero h1 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; margin: 0; background: linear-gradient(90deg, #FFFFFF, #A5B4FC, #38BDF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero h1 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; margin: 0; background: linear-gradient(90deg, #FFFFFF, #C4B5FD, #E879F9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 """
 
 def explore_pipeline(user_idea: str):
@@ -395,7 +395,7 @@ def explore_pipeline(user_idea: str):
     <div style="background:rgba(15,23,42,0.85); padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.08);">
         <div style="font-size:11px; text-transform:uppercase; font-weight:700; color:#94A3B8; margin-bottom:4px;">Decomposition Layer</div>
         <div style="font-size:13px; color:#F1F5F9; margin-bottom:6px;"><b>Domain:</b> {struct.domain} | <b>Problem:</b> {struct.primary_problem}</div>
-        <div style="font-size:12px; color:#A5B4FC;"><b>Modalities:</b> {", ".join(struct.input_modalities)} | <b>Techniques:</b> {", ".join(struct.ai_subfields)}</div>
+        <div style="font-size:12px; color:#C4B5FD;"><b>Modalities:</b> {", ".join(struct.input_modalities)} | <b>Techniques:</b> {", ".join(struct.ai_subfields)}</div>
     </div>
     """
 
@@ -406,8 +406,8 @@ def explore_pipeline(user_idea: str):
 def deep_dive(cluster_name: str, state: dict, papers: list):
     cluster_papers = [p for p in papers if getattr(p, "cluster_label", "") == cluster_name] or papers[:3]
     out = f"<div style='font-family:Outfit; font-size:16px; font-weight:700; color:#F8FAFC; margin-bottom:8px; text-transform:uppercase;'>Direction: {cluster_name}</div>"
-    out += "<div style='margin-bottom:12px; background:rgba(15,23,42,0.6); padding:10px; border-radius:8px; border-left:3px solid #10B981; font-size:12.5px;'>"
-    out += "<span style='color:#34D399; font-weight:600;'>[PUBLISHED LITERATURE]</span> High computational latency in cross-modal backbones.<br>"
+    out += "<div style='margin-bottom:12px; background:rgba(18,8,32,0.72); padding:10px; border-radius:8px; border-left:3px solid #D946EF; font-size:12.5px;'>"
+    out += "<span style='color:#F0ABFC; font-weight:600;'>[PUBLISHED LITERATURE]</span> High computational latency in cross-modal backbones.<br>"
     out += "<span style='color:#C084FC; font-weight:600;'>[AI-SYNTHESIZED]</span> Susceptible to adversarial perturbations and zero-day distribution shifts.</div>"
     
     for p in cluster_papers:
@@ -416,7 +416,7 @@ def deep_dive(cluster_name: str, state: dict, papers: list):
             <div style="font-weight:700; font-size:14px; color:#F8FAFC;">{p.title}</div>
             <div style="font-size:11.5px; color:#94A3B8; margin:4px 0 6px 0;">Author: {p.authors_display} | Year: {p.year or 'Recent'} | Citations: {p.citation_count} | Source: {p.source_api}</div>
             <div style="font-size:12px; color:#CBD5E1; line-height:1.5;">{p.abstract[:200]}...</div>
-            <a href="{p.clean_url}" target="_blank" style="display:inline-block; margin-top:6px; color:#38BDF8; font-size:11.5px; text-decoration:none; font-weight:600;">View Source / DOI &rarr;</a>
+            <a href="{p.clean_url}" target="_blank" style="display:inline-block; margin-top:6px; color:#67E8F9; font-size:11.5px; text-decoration:none; font-weight:600;">View Source / DOI &rarr;</a>
         </div>
         """
     return out

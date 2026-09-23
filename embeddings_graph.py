@@ -164,7 +164,7 @@ class ResearchGraphEngine:
                 label=f"{sim_score:.2f}",
                 title=f"Cosine Similarity: {sim_score:.2f}",
                 value=max(1, int(sim_score * 6)),
-                color={"color": "#818CF8", "highlight": "#C7D2FE"}
+                color={"color": "#A855F7", "highlight": "#E9D5FF"}
             )
 
             # 3. Leaf Paper Nodes
@@ -202,8 +202,8 @@ class ResearchGraphEngine:
             fig = go.Figure()
             fig.update_layout(
                 template="plotly_dark",
-                paper_bgcolor="#090D16",
-                plot_bgcolor="rgba(15, 23, 42, 0.75)",
+                paper_bgcolor="#050308",
+                plot_bgcolor="rgba(18, 8, 32, 0.82)",
                 annotations=[dict(text="Execute 'EXPLORE RESEARCH LANDSCAPE' to generate knowledge graph.", showarrow=False, font=dict(color="#94A3B8", size=13))],
                 xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                 yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
@@ -223,7 +223,7 @@ class ResearchGraphEngine:
 
         edge_trace = go.Scatter(
             x=edge_x, y=edge_y,
-            line=dict(width=1.5, color="rgba(148, 163, 184, 0.35)"),
+            line=dict(width=1.5, color="rgba(192, 132, 252, 0.34)"),
             hoverinfo="none",
             mode="lines",
             showlegend=False
@@ -276,7 +276,7 @@ class ResearchGraphEngine:
             marker=dict(size=22, color="#7C3AED", symbol="circle", line=dict(color="#C084FC", width=2)),
             text=cluster_text,
             textposition="bottom center",
-            textfont=dict(color="#7DD3FC", size=11, family="Inter"),
+            textfont=dict(color="#C4B5FD", size=11, family="Inter"),
             hoverinfo="text",
             hovertext=cluster_hover
         )
@@ -288,7 +288,7 @@ class ResearchGraphEngine:
             marker=dict(size=13, color="#D946EF", symbol="square", line=dict(color="#F0ABFC", width=1.5)),
             text=paper_text,
             textposition="top center",
-            textfont=dict(color="#A7F3D0", size=10, family="Inter"),
+            textfont=dict(color="#F5D0FE", size=10, family="Inter"),
             hoverinfo="text",
             hovertext=paper_hover
         )
@@ -313,13 +313,13 @@ class ResearchGraphEngine:
                 y=-0.14,
                 xanchor="center",
                 x=0.5,
-                font=dict(size=11, color="#94A3B8")
+                font=dict(size=11, color="#C4B5FD")
             ),
             margin=dict(l=12, r=12, t=58, b=52),
             height=540,
             hoverlabel=dict(
-                bgcolor="#111C35",
-                bordercolor="#475569",
+                bgcolor="#180B2A",
+                bordercolor="#A855F7",
                 font=dict(color="#F8FAFC", family="Inter", size=12),
             ),
         )
@@ -338,13 +338,13 @@ class ResearchGraphEngine:
                 "font": {"color": "#FFFFFF", "face": "Inter, sans-serif", "size": 13}
             }
             if attrs.get("group") == "user":
-                node_dict["color"] = {"background": "#6366F1", "border": "#A5B4FC", "highlight": {"background": "#4F46E5", "border": "#FFFFFF"}}
+                node_dict["color"] = {"background": "#A855F7", "border": "#E9D5FF", "highlight": {"background": "#7C3AED", "border": "#FFFFFF"}}
                 node_dict["shape"] = "hexagon"
             elif attrs.get("group") == "cluster":
-                node_dict["color"] = {"background": "#0284C7", "border": "#38BDF8", "highlight": {"background": "#0369A1", "border": "#FFFFFF"}}
+                node_dict["color"] = {"background": "#7C3AED", "border": "#C084FC", "highlight": {"background": "#6D28D9", "border": "#FFFFFF"}}
                 node_dict["shape"] = "dot"
             else:
-                node_dict["color"] = {"background": "#059669", "border": "#34D399", "highlight": {"background": "#047857", "border": "#FFFFFF"}}
+                node_dict["color"] = {"background": "#D946EF", "border": "#F0ABFC", "highlight": {"background": "#A21CAF", "border": "#FFFFFF"}}
                 node_dict["shape"] = "box"
                 node_dict["margin"] = 8
 
@@ -372,9 +372,9 @@ class ResearchGraphEngine:
     <meta charset="utf-8">
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
-        body, html {{ margin: 0; padding: 0; width: 100%; height: 100%; background: #090D16; overflow: hidden; font-family: 'Inter', sans-serif; }}
-        #network-container {{ width: 100%; height: 100%; background: radial-gradient(circle at center, #1E293B 0%, #090D16 100%); }}
-        .legend {{ position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #E2E8F0; font-size: 11.5px; z-index: 10; }}
+        body, html {{ margin: 0; padding: 0; width: 100%; height: 100%; background: #050308; overflow: hidden; font-family: 'Inter', sans-serif; }}
+        #network-container {{ width: 100%; height: 100%; background: radial-gradient(circle at center, #24103D 0%, #050308 100%); }}
+        .legend {{ position: absolute; bottom: 12px; left: 12px; background: rgba(18, 8, 32, 0.88); backdrop-filter: blur(8px); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(192,132,252,0.2); color: #F3E8FF; font-size: 11.5px; z-index: 10; }}
         .legend-item {{ display: flex; align-items: center; margin: 3px 0; }}
         .legend-dot {{ width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }}
     </style>
@@ -382,9 +382,9 @@ class ResearchGraphEngine:
 <body>
     <div id="network-container"></div>
     <div class="legend">
-        <div class="legend-item"><span class="legend-dot" style="background:#6366F1;"></span> <b>Research Hypothesis</b></div>
-        <div class="legend-item"><span class="legend-dot" style="background:#0284C7;"></span> <b>Research Direction</b></div>
-        <div class="legend-item"><span class="legend-dot" style="background:#059669; border-radius: 2px;"></span> <b>Peer-Reviewed Paper</b></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#A855F7;"></span> <b>Research Hypothesis</b></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#7C3AED;"></span> <b>Research Direction</b></div>
+        <div class="legend-item"><span class="legend-dot" style="background:#D946EF; border-radius: 2px;"></span> <b>Peer-Reviewed Paper</b></div>
     </div>
     <script type="text/javascript">
         var nodes = new vis.DataSet({nodes_json});
@@ -406,7 +406,7 @@ class ResearchGraphEngine:
 </body>
 </html>"""
         escaped_html = html.escape(raw_html, quote=True)
-        return f"""<iframe srcdoc="{escaped_html}" style="width:100%; height:{height}; border:none; border-radius:10px; background:#090D16;" frameborder="0"></iframe>"""
+        return f"""<iframe srcdoc="{escaped_html}" style="width:100%; height:{height}; border:none; border-radius:10px; background:#050308;" frameborder="0"></iframe>"""
 
 # Global graph engine instance
 graph_engine = ResearchGraphEngine()
