@@ -213,25 +213,45 @@ def build_app():
                 # TAB 2: DIRECTION DEEP-DIVE & PEER-REVIEWED LITERATURE
                 # -----------------------------------------------------------
                 with gr.TabItem("Direction Deep-Dive & Peer-Reviewed Literature", id="tab_deepdive"):
-                    with gr.Row():
-                        with gr.Column(scale=4):
-                            cluster_selector = gr.Dropdown(
-                                label="Select Research Direction Cluster",
-                                choices=[],
-                                interactive=True
-                            )
-                            inspect_btn = gr.Button("Inspect Direction", variant="secondary")
-                            gr.Markdown(
+                    gr.HTML(
+                        """
+                        <div class="deep-dive-hero">
+                            <div class="deep-dive-kicker">INTELLIGENCE LAYER 02 <span></span> EVIDENCE REVIEW</div>
+                            <div class="deep-dive-title">Go deeper into each <em>research direction.</em></div>
+                            <div class="deep-dive-subtitle">Connect your idea to the literature, inspect the evidence behind each gap, and open the verified papers anchoring the direction.</div>
+                        </div>
+                        """
+                    )
+                    with gr.Row(elem_classes=["deep-dive-layout"]):
+                        with gr.Column(scale=4, elem_classes=["deep-dive-controls"]):
+                            gr.HTML(
                                 """
-                                <div style='background:rgba(15,23,42,0.6); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); margin-top:12px;'>
-                                    <div style='font-size:11px; font-weight:700; color:#94A3B8; text-transform:uppercase; margin-bottom:6px;'>Evidence Badging Criteria:</div>
-                                    <div style='margin-bottom:6px;'><span class='badge-tag badge-paper'>[PUBLISHED LITERATURE]</span> <span style='font-size:12px; color:#CBD5E1;'>Direct limitation extracted from published literature abstract.</span></div>
-                                    <div><span class='badge-tag badge-inferred'>[AI-SYNTHESIZED]</span> <span style='font-size:12px; color:#CBD5E1;'>High-confidence gap extrapolated across retrieved corpus.</span></div>
+                                <div class="deep-dive-control-heading">
+                                    <div class="deep-dive-step">01</div>
+                                    <div>
+                                        <div class="deep-dive-control-title">Choose a direction</div>
+                                        <div class="deep-dive-control-copy">Select a cluster from the generated evidence map.</div>
+                                    </div>
                                 </div>
                                 """
                             )
-                        with gr.Column(scale=8):
-                            deep_dive_output = gr.HTML()
+                            cluster_selector = gr.Dropdown(
+                                label="Research direction cluster",
+                                choices=[],
+                                interactive=True
+                            )
+                            inspect_btn = gr.Button("ANALYZE SELECTED DIRECTION", variant="primary", elem_classes=["deep-dive-action-btn"])
+                            gr.Markdown(
+                                """
+                                <div class='evidence-legend'>
+                                    <div class='evidence-legend-title'>Evidence key</div>
+                                    <div class='evidence-legend-item'><span class='evidence-dot evidence-dot-paper'></span><span><b>Published literature</b><br><small>Direct limitation from a paper abstract.</small></span></div>
+                                    <div class='evidence-legend-item'><span class='evidence-dot evidence-dot-inferred'></span><span><b>AI-synthesized</b><br><small>Pattern inferred across the retrieved corpus.</small></span></div>
+                                </div>
+                                """
+                            )
+                        with gr.Column(scale=8, elem_classes=["deep-dive-results"]):
+                            deep_dive_output = gr.HTML(elem_classes=["deep-dive-output"])
 
                 # -----------------------------------------------------------
                 # TAB 3: SATURATION MATRIX & TIMELINE

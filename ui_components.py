@@ -152,6 +152,218 @@ footer {
     border-radius: 10px;
 }
 
+/* Direction deep-dive tab */
+.deep-dive-hero {
+    position: relative;
+    overflow: hidden;
+    margin: 4px 0 16px;
+    padding: 22px 26px;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 90% 0%, rgba(16, 185, 129, 0.14), transparent 28%),
+        radial-gradient(circle at 8% 100%, rgba(139, 92, 246, 0.14), transparent 32%),
+        linear-gradient(110deg, rgba(15, 23, 42, 0.98), rgba(18, 39, 55, 0.94));
+    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.24), inset 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.deep-dive-kicker {
+    color: #6EE7B7;
+    font: 700 10px/1.2 'JetBrains Mono', monospace;
+    letter-spacing: 1.6px;
+}
+
+.deep-dive-kicker span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0 8px 2px;
+    border-radius: 50%;
+    background: #A78BFA;
+    box-shadow: 0 0 10px #A78BFA;
+}
+
+.deep-dive-title {
+    margin-top: 9px;
+    color: #F8FAFC;
+    font: 800 25px/1.15 'Outfit', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.deep-dive-title em {
+    color: #6EE7B7;
+    font-style: normal;
+}
+
+.deep-dive-subtitle {
+    max-width: 700px;
+    margin-top: 8px;
+    color: #94A3B8;
+    font-size: 12.5px;
+    line-height: 1.55;
+}
+
+.deep-dive-layout {
+    gap: 16px !important;
+}
+
+.deep-dive-controls {
+    align-self: flex-start;
+    padding: 18px !important;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 14px;
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.94), rgba(8, 15, 31, 0.98));
+    box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+}
+
+.deep-dive-control-heading {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.deep-dive-step {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border: 1px solid rgba(110, 231, 183, 0.35);
+    border-radius: 9px;
+    background: rgba(16, 185, 129, 0.12);
+    color: #6EE7B7;
+    font: 700 11px 'JetBrains Mono', monospace;
+}
+
+.deep-dive-control-title {
+    color: #F8FAFC;
+    font: 700 14px 'Outfit', sans-serif;
+}
+
+.deep-dive-control-copy {
+    margin-top: 3px;
+    color: #64748B;
+    font-size: 11px;
+}
+
+.deep-dive-action-btn {
+    margin-top: 12px !important;
+    width: 100% !important;
+}
+
+.evidence-legend {
+    margin-top: 18px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 11px;
+    background: rgba(2, 6, 23, 0.32);
+}
+
+.evidence-legend-title {
+    margin-bottom: 11px;
+    color: #CBD5E1;
+    font: 700 10px 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.evidence-legend-item {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    margin-top: 10px;
+    color: #CBD5E1;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.evidence-legend-item small {
+    color: #64748B;
+    font-size: 10px;
+}
+
+.evidence-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    margin-top: 3px;
+    border-radius: 50%;
+}
+
+.evidence-dot-paper {
+    background: #34D399;
+    box-shadow: 0 0 9px rgba(52, 211, 153, 0.7);
+}
+
+.evidence-dot-inferred {
+    background: #C084FC;
+    box-shadow: 0 0 9px rgba(192, 132, 252, 0.7);
+}
+
+.deep-dive-results {
+    min-width: 0;
+}
+
+.deep-dive-output {
+    display: block;
+}
+
+.deep-dive-gap-card {
+    margin-bottom: 9px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 3px solid;
+    border-radius: 9px;
+    background: rgba(15, 23, 42, 0.62);
+}
+
+.deep-dive-connection-card {
+    margin-bottom: 16px;
+    padding: 15px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(14, 165, 233, 0.06));
+}
+
+.deep-dive-summary-card {
+    padding: 18px !important;
+}
+
+.deep-dive-paper-card {
+    padding: 17px 18px;
+    border-color: rgba(52, 211, 153, 0.13);
+}
+
+.deep-dive-section-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 18px 0 10px;
+    color: #F8FAFC;
+    font: 700 13.5px 'Outfit', sans-serif;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.deep-dive-section-label span {
+    color: #6EE7B7;
+    font: 700 10px 'JetBrains Mono', monospace;
+}
+
+.deep-dive-section-label small {
+    margin-left: auto;
+    color: #64748B;
+    font: 500 10px 'JetBrains Mono', monospace;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+@media (max-width: 900px) {
+    .deep-dive-title {
+        font-size: 21px;
+    }
+}
+
 @media (max-width: 900px) {
     .graph-tab-title {
         font-size: 21px;
@@ -494,7 +706,7 @@ def render_node_deep_dive(cluster_name: str, connection_info: Dict[str, Any], ga
     for g in gaps:
         badge_cls = "badge-paper" if g["type"] == "From Paper" else "badge-inferred"
         gaps_html += f"""
-        <div style="margin-bottom:8px; padding:10px 14px; background:rgba(15,23,42,0.6); border-radius:8px; border-left:3px solid {'#10B981' if g['type']=='From Paper' else '#8B5CF6'};">
+        <div class="deep-dive-gap-card" style="border-left-color:{'#10B981' if g['type']=='From Paper' else '#8B5CF6'};">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                 <span class="badge-tag {badge_cls}">[{'PUBLISHED LITERATURE' if g['type']=='From Paper' else 'AI-SYNTHESIZED'}]</span>
                 <span style="font-size:11px; color:#94A3B8;">Anchor: {g.get('source', 'Literature')}</span>
@@ -506,7 +718,7 @@ def render_node_deep_dive(cluster_name: str, connection_info: Dict[str, Any], ga
     papers_html = ""
     for p in papers:
         papers_html += f"""
-        <div class="research-card">
+        <div class="research-card deep-dive-paper-card">
             <div class="card-title">{p.title}</div>
             <div class="meta-row">
                 <span>Author: {p.authors_display}</span>
@@ -521,13 +733,13 @@ def render_node_deep_dive(cluster_name: str, connection_info: Dict[str, Any], ga
 
     return f"""
     <div style="margin-top:8px;">
-        <div class="glass-panel" style="margin-bottom:14px;">
+        <div class="glass-panel deep-dive-summary-card" style="margin-bottom:14px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                 <h2 style="font-family:'Outfit'; font-size:18px; color:#F8FAFC; margin:0; text-transform:uppercase; letter-spacing:0.4px;">Direction: {cluster_name}</h2>
                 <span class="badge-tag badge-domain">{len(papers)} Anchor Papers</span>
             </div>
             
-            <div style="background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.25); border-radius:8px; padding:12px; margin-bottom:14px;">
+            <div class="deep-dive-connection-card">
                 <div style="font-family:'Outfit'; font-size:12px; font-weight:700; color:#A5B4FC; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.4px;">Connection to Your Proposed Research</div>
                 <div style="font-size:12.5px; color:#E2E8F0; margin-bottom:8px; line-height:1.5;">{connection_info.get('connection_summary', '')}</div>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:11.5px; color:#94A3B8;">
@@ -537,12 +749,12 @@ def render_node_deep_dive(cluster_name: str, connection_info: Dict[str, Any], ga
                 </div>
             </div>
 
-            <div style="font-family:'Outfit'; font-size:13.5px; font-weight:700; color:#F8FAFC; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.4px;">Identified Literature Gaps & Limitations</div>
+            <div class="deep-dive-section-label"><span>02</span> Identified Literature Gaps & Limitations</div>
             {gaps_html}
         </div>
 
         <div style="margin-top:14px;">
-            <h3 style="font-family:'Outfit'; font-size:15px; color:#F8FAFC; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.4px;">Peer-Reviewed Papers in this Cluster ({len(papers)})</h3>
+            <h3 class="deep-dive-section-label"><span>03</span> Peer-Reviewed Papers <small>{len(papers)} anchors</small></h3>
             {papers_html}
         </div>
     </div>
