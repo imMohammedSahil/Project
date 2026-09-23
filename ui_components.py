@@ -64,13 +64,16 @@ footer {
     overflow: hidden;
     margin: 4px 0 16px;
     padding: 22px 26px;
-    border: 1px solid rgba(129, 140, 248, 0.22);
+    border: 1px solid rgba(103, 232, 249, 0.26);
     border-radius: 16px;
     background:
-        radial-gradient(circle at 88% 20%, rgba(14, 165, 233, 0.16), transparent 28%),
-        radial-gradient(circle at 12% 110%, rgba(99, 102, 241, 0.18), transparent 34%),
-        linear-gradient(110deg, rgba(15, 23, 42, 0.98), rgba(24, 31, 63, 0.92));
-    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.24), inset 0 1px rgba(255, 255, 255, 0.06);
+        radial-gradient(circle at 88% 20%, rgba(34, 211, 238, 0.22), transparent 28%),
+        radial-gradient(circle at 12% 110%, rgba(139, 92, 246, 0.24), transparent 34%),
+        linear-gradient(110deg, rgba(8, 15, 31, 0.99), rgba(27, 20, 61, 0.95));
+    box-shadow:
+        0 14px 34px rgba(2, 6, 23, 0.28),
+        0 0 30px rgba(34, 211, 238, 0.06),
+        inset 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .back-to-input-btn {
@@ -94,15 +97,15 @@ footer {
     height: 180px;
     right: 7%;
     top: -108px;
-    border: 1px solid rgba(165, 180, 252, 0.18);
+    border: 1px solid rgba(165, 243, 252, 0.22);
     border-radius: 50%;
-    box-shadow: 0 0 0 22px rgba(165, 180, 252, 0.035), 0 0 0 44px rgba(165, 180, 252, 0.025);
+    box-shadow: 0 0 0 22px rgba(103, 232, 249, 0.045), 0 0 0 44px rgba(167, 139, 250, 0.035);
 }
 
 .graph-tab-kicker {
     position: relative;
     z-index: 1;
-    color: #67E8F9;
+    color: #A5F3FC;
     font: 700 10px/1.2 'JetBrains Mono', monospace;
     letter-spacing: 1.6px;
 }
@@ -113,8 +116,8 @@ footer {
     height: 5px;
     margin: 0 8px 2px;
     border-radius: 50%;
-    background: #34D399;
-    box-shadow: 0 0 10px #34D399;
+    background: #22D3EE;
+    box-shadow: 0 0 10px #22D3EE;
 }
 
 .graph-tab-title {
@@ -127,7 +130,7 @@ footer {
 }
 
 .graph-tab-title em {
-    color: #A5B4FC;
+    color: #C4B5FD;
     font-style: normal;
 }
 
@@ -136,7 +139,7 @@ footer {
     z-index: 1;
     max-width: 650px;
     margin-top: 8px;
-    color: #94A3B8;
+    color: #CBD5E1;
     font-size: 12.5px;
     line-height: 1.55;
 }
@@ -156,10 +159,10 @@ footer {
 
 .graph-visual-panel {
     overflow: hidden;
-    border: 1px solid rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(103, 232, 249, 0.18);
     border-radius: 14px;
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(8, 15, 31, 0.98));
-    box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+    background: linear-gradient(145deg, rgba(12, 18, 39, 0.96), rgba(8, 10, 26, 0.99));
+    box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22), 0 0 24px rgba(139, 92, 246, 0.05);
 }
 
 .knowledge-graph-plot {
