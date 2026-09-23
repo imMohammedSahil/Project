@@ -721,8 +721,14 @@ footer {
     padding: 0 !important;
     border: 1px solid rgba(129, 140, 248, 0.3) !important;
     border-radius: 15px !important;
-    background: rgba(8, 15, 31, 0.88) !important;
-    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.28), inset 0 1px rgba(255, 255, 255, 0.045);
+    background:
+        radial-gradient(circle at 12% 20%, rgba(99, 102, 241, 0.2), transparent 30%),
+        radial-gradient(circle at 88% 80%, rgba(14, 165, 233, 0.14), transparent 34%),
+        linear-gradient(135deg, rgba(24, 32, 72, 0.98), rgba(9, 22, 48, 0.98)) !important;
+    box-shadow:
+        0 12px 28px rgba(2, 6, 23, 0.28),
+        inset 0 1px rgba(255, 255, 255, 0.07),
+        0 0 0 1px rgba(99, 102, 241, 0.05);
     transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
@@ -790,25 +796,38 @@ footer {
     padding: 21px 20px !important;
     border: 0 !important;
     border-radius: 0 !important;
-    background: transparent !important;
+    background:
+        linear-gradient(135deg, rgba(30, 41, 92, 0.58), rgba(12, 30, 61, 0.62)) !important;
     color: #F8FAFC !important;
     font-size: 14.5px !important;
     line-height: 1.7 !important;
     resize: vertical !important;
-    transition: background 0.25s ease !important;
+    caret-color: #67E8F9 !important;
+    transition: background 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 .research-idea-input textarea::placeholder {
-    color: #64748B !important;
+    color: #94A3B8 !important;
+    opacity: 0.9 !important;
 }
 
 .research-idea-input textarea:hover {
-    background: rgba(15, 23, 42, 0.28) !important;
+    background:
+        linear-gradient(135deg, rgba(39, 50, 111, 0.66), rgba(13, 38, 76, 0.72)) !important;
 }
 
 .research-idea-input textarea:focus {
-    background: rgba(15, 23, 42, 0.34) !important;
-    box-shadow: inset 0 0 0 1px rgba(129, 140, 248, 0.22), inset 0 0 30px rgba(99, 102, 241, 0.06) !important;
+    background:
+        linear-gradient(135deg, rgba(44, 55, 126, 0.72), rgba(14, 45, 88, 0.78)) !important;
+    box-shadow:
+        inset 0 0 0 1px rgba(129, 140, 248, 0.38),
+        inset 0 0 34px rgba(99, 102, 241, 0.12),
+        0 0 22px rgba(14, 165, 233, 0.08) !important;
+}
+
+.research-idea-input textarea::selection {
+    color: #FFFFFF !important;
+    background: rgba(99, 102, 241, 0.72) !important;
 }
 
 .research-input-footer {
