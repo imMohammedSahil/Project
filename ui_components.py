@@ -1225,6 +1225,176 @@ textarea:focus, input[type="text"]:focus {
     border-radius: 8px !important;
     background: rgba(18, 8, 32, 0.52) !important;
 }
+
+/* Semantic decomposition content */
+.concept-panel {
+    padding: 18px !important;
+}
+
+.concept-pipeline {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    padding: 12px;
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(126, 34, 206, 0.16), rgba(18, 8, 32, 0.68));
+}
+
+.concept-pipeline-label,
+.concept-section-label {
+    color: #C4B5FD;
+    font: 700 10px 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.concept-pipeline-step {
+    padding: 6px 9px;
+    border: 1px solid rgba(192, 132, 252, 0.28);
+    border-radius: 7px;
+    background: rgba(168, 85, 247, 0.13);
+    color: #E9D5FF;
+    font: 700 10px 'JetBrains Mono', monospace;
+    letter-spacing: 0.2px;
+}
+
+.concept-pipeline-arrow {
+    color: #A855F7;
+    font-size: 14px;
+}
+
+.concept-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 18px 0 13px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid rgba(192, 132, 252, 0.14);
+}
+
+.concept-title {
+    color: #F8FAFC;
+    font: 800 17px 'Outfit', sans-serif;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+}
+
+.concept-specificity {
+    margin: 0 !important;
+    white-space: nowrap;
+}
+
+.concept-fact-grid {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.8fr);
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.concept-fact-card {
+    min-height: 68px;
+    padding: 12px 14px;
+    border: 1px solid rgba(192, 132, 252, 0.13);
+    border-radius: 10px;
+    background: rgba(18, 8, 32, 0.66);
+}
+
+.concept-fact-label {
+    color: #8B7AA8;
+    font: 700 9px 'JetBrains Mono', monospace;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.concept-fact-value {
+    margin-top: 6px;
+    color: #F3E8FF;
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.4;
+}
+
+.concept-section {
+    margin-top: 15px;
+}
+
+.concept-section-label {
+    margin-bottom: 8px;
+    color: #A78BFA;
+}
+
+.concept-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.concept-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    border-radius: 7px;
+    background: rgba(168, 85, 247, 0.12);
+    color: #E9D5FF;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.concept-chip-technique {
+    border-color: rgba(232, 121, 249, 0.24);
+    background: rgba(217, 70, 239, 0.1);
+    color: #F5D0FE;
+}
+
+.concept-queries {
+    margin-top: 17px;
+    padding: 14px;
+    border: 1px solid rgba(192, 132, 252, 0.16);
+    border-radius: 11px;
+    background: rgba(10, 4, 18, 0.48);
+}
+
+.concept-query-list {
+    display: grid;
+    gap: 7px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.concept-query-item {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    padding: 9px 10px;
+    border: 1px solid rgba(192, 132, 252, 0.1);
+    border-radius: 7px;
+    background: rgba(18, 8, 32, 0.7);
+    color: #DDD6FE;
+    font: 11px/1.45 'JetBrains Mono', monospace;
+}
+
+.concept-query-item::before {
+    content: "↗";
+    flex: 0 0 auto;
+    color: #E879F9;
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .concept-fact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .concept-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
 """
 
 def render_hero_header() -> str:
@@ -1245,54 +1415,52 @@ def render_hero_header() -> str:
     """
 
 def render_concept_breakdown(idea: IdeaStructure) -> str:
-    modalities_html = "".join([f'<span class="badge-tag badge-domain" style="font-size:12px; padding:4px 10px;">{m}</span>' for m in idea.input_modalities])
-    subfields_html = "".join([f'<span class="badge-tag badge-inferred" style="font-size:12px; padding:4px 10px;">{s}</span>' for s in idea.ai_subfields])
-    queries_html = "".join([f'<li style="margin:6px 0; color:#E2E8F0;"><code style="background:rgba(0,0,0,0.35); padding:3px 8px; border-radius:4px; font-size:12px; font-family:\'JetBrains Mono\', monospace; border:1px solid rgba(255,255,255,0.06);">{q}</code></li>' for q in idea.academic_search_queries])
+    modalities_html = "".join([f'<span class="concept-chip">{m}</span>' for m in idea.input_modalities])
+    subfields_html = "".join([f'<span class="concept-chip concept-chip-technique">{s}</span>' for s in idea.ai_subfields])
+    queries_html = "".join([f'<li class="concept-query-item">{q}</li>' for q in idea.academic_search_queries])
 
     return f"""
-    <div class="glass-panel">
-        <!-- Live Execution Pipeline Progress Bar -->
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px; padding:8px 12px; background:rgba(99,102,241,0.08); border-radius:8px; border:1px solid rgba(99,102,241,0.25); flex-wrap:wrap;">
-            <span style="font-size:11px; font-weight:700; color:#A5B4FC; text-transform:uppercase; letter-spacing:0.5px; font-family:'JetBrains Mono', monospace;">PIPELINE:</span>
-            <span class="badge-tag badge-paper">1. SEMANTIC DECOMPOSITION</span>
-            <span style="color:#64748B;">&rarr;</span>
-            <span class="badge-tag badge-paper">2. ACADEMIC RETRIEVAL</span>
-            <span style="color:#64748B;">&rarr;</span>
-            <span class="badge-tag badge-paper">3. KNOWLEDGE GRAPH</span>
-            <span style="color:#64748B;">&rarr;</span>
-            <span class="badge-tag badge-domain">4. GAP DISCOVERY</span>
+    <div class="glass-panel concept-panel">
+        <div class="concept-pipeline">
+            <span class="concept-pipeline-label">Pipeline</span>
+            <span class="concept-pipeline-step">01 · DECOMPOSE</span>
+            <span class="concept-pipeline-arrow">→</span>
+            <span class="concept-pipeline-step">02 · RETRIEVE</span>
+            <span class="concept-pipeline-arrow">→</span>
+            <span class="concept-pipeline-step">03 · CONNECT</span>
+            <span class="concept-pipeline-arrow">→</span>
+            <span class="concept-pipeline-step">04 · DISCOVER GAPS</span>
         </div>
 
-        <!-- AI Interpretation Layer Header -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">
-            <span style="font-family:'Outfit', sans-serif; font-size:16px; font-weight:800; color:#F8FAFC; text-transform:uppercase; letter-spacing:0.5px;">AI Interpretation Layer</span>
-            <span class="badge-tag {'badge-paper' if idea.specificity_level=='High' else 'badge-inferred'}" style="font-size:12px; padding:4px 12px;">Specificity: {idea.specificity_level}</span>
+        <div class="concept-header">
+            <div class="concept-title">AI interpretation layer</div>
+            <span class="badge-tag {'badge-paper' if idea.specificity_level=='High' else 'badge-inferred'} concept-specificity">SPECIFICITY · {idea.specificity_level.upper()}</span>
         </div>
         
-        <div style="display:grid; grid-template-columns: 1fr 2fr; gap:10px; margin-bottom:14px;">
-            <div style="background:rgba(15,23,42,0.7); padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
-                <div style="font-size:10.5px; color:#94A3B8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Primary Domain</div>
-                <div style="font-size:14.5px; color:#F1F5F9; font-weight:700; margin-top:2px;">{idea.domain}</div>
+        <div class="concept-fact-grid">
+            <div class="concept-fact-card">
+                <div class="concept-fact-label">Primary domain</div>
+                <div class="concept-fact-value">{idea.domain}</div>
             </div>
-            <div style="background:rgba(15,23,42,0.7); padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
-                <div style="font-size:10.5px; color:#94A3B8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Target Problem</div>
-                <div style="font-size:13px; color:#F1F5F9; margin-top:2px; line-height:1.4;">{idea.primary_problem}</div>
+            <div class="concept-fact-card">
+                <div class="concept-fact-label">Target problem</div>
+                <div class="concept-fact-value">{idea.primary_problem}</div>
             </div>
         </div>
 
-        <div style="margin-bottom:12px;">
-            <div style="font-size:10.5px; color:#94A3B8; text-transform:uppercase; font-weight:700; margin-bottom:6px; letter-spacing:0.5px;">Input Modalities:</div>
-            {modalities_html}
+        <div class="concept-section">
+            <div class="concept-section-label">Input modalities</div>
+            <div class="concept-chip-row">{modalities_html}</div>
         </div>
 
-        <div style="margin-bottom:14px;">
-            <div style="font-size:10.5px; color:#94A3B8; text-transform:uppercase; font-weight:700; margin-bottom:6px; letter-spacing:0.5px;">AI Subfields & Techniques:</div>
-            {subfields_html}
+        <div class="concept-section">
+            <div class="concept-section-label">AI subfields & techniques</div>
+            <div class="concept-chip-row">{subfields_html}</div>
         </div>
 
-        <div style="background:rgba(15,23,42,0.6); padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
-            <div style="font-size:10.5px; color:#94A3B8; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:6px;">Automated Academic Queries (Semantic Scholar / OpenAlex):</div>
-            <ul style="margin:4px 0 0 16px; padding:0; font-size:12px;">
+        <div class="concept-queries">
+            <div class="concept-section-label">Automated academic queries <span style="color:#8B7AA8; font-weight:500;">/ Semantic Scholar + OpenAlex</span></div>
+            <ul class="concept-query-list">
                 {queries_html}
             </ul>
         </div>
