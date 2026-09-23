@@ -55,6 +55,20 @@ footer {
     box-shadow: 0 14px 34px rgba(2, 6, 23, 0.24), inset 0 1px rgba(255, 255, 255, 0.06);
 }
 
+.back-to-input-btn {
+    width: auto !important;
+    min-width: 190px !important;
+    margin: 4px 0 0 auto !important;
+    border: 1px solid rgba(148, 163, 184, 0.24) !important;
+    background: rgba(15, 23, 42, 0.72) !important;
+    color: #CBD5E1 !important;
+}
+
+.back-to-input-btn:hover {
+    border-color: rgba(165, 180, 252, 0.65) !important;
+    color: #F8FAFC !important;
+}
+
 .graph-tab-hero::after {
     content: "";
     position: absolute;

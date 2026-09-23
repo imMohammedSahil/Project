@@ -54,6 +54,7 @@ def analyze_and_explore_research(user_idea: str):
 
     if not full_text:
         return (
+            gr.update(visible=True),
             gr.update(visible=False),
             "<div style='color:#F87171; padding:12px;'>Please enter a research idea or select a preset to begin.</div>",
             None,
@@ -100,6 +101,7 @@ def analyze_and_explore_research(user_idea: str):
     initial_deep_dive = inspect_cluster_node(first_choice, session_state, papers) if first_choice else ""
 
     return (
+        gr.update(visible=False),  # Move from input screen to results screen
         gr.update(visible=True),  # Reveal Stage 2 Dashboard
         concept_html,
         fig_graph,
@@ -160,7 +162,7 @@ def build_app():
         # ===================================================================
         # STAGE 1: HERO RESEARCH HYPOTHESIS COMMAND STUDIO
         # ===================================================================
-        with gr.Group():
+        with gr.Group() as input_section:
             gr.Markdown("<div style='font-size:14px; font-weight:800; color:#F8FAFC; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;'>Describe Your Research Idea or Hypothesis</div>")
             idea_input = gr.Textbox(
                 label="Describe Your Proposed Research Area",
@@ -176,6 +178,11 @@ def build_app():
         # STAGE 2: TABBED INTELLIGENCE DASHBOARD (REVEALED ON EXPLORE)
         # ===================================================================
         with gr.Column(visible=False) as dashboard_section:
+            back_to_input_btn = gr.Button(
+                "← NEW RESEARCH IDEA",
+                variant="secondary",
+                elem_classes=["back-to-input-btn"],
+            )
             gr.HTML("<hr style='border:0; border-top:1px solid rgba(255,255,255,0.08); margin:24px 0;'>")
 
             with gr.Tabs() as main_tabs:
@@ -280,6 +287,7 @@ def build_app():
             fn=analyze_and_explore_research,
             inputs=[idea_input],
             outputs=[
+                input_section,
                 dashboard_section,
                 concept_output,
                 graph_output,
@@ -291,6 +299,12 @@ def build_app():
                 all_papers_state,
                 metrics_state
             ]
+        )
+
+        back_to_input_btn.click(
+            fn=lambda: (gr.update(visible=True), gr.update(visible=False)),
+            inputs=[],
+            outputs=[input_section, dashboard_section],
         )
 
         inspect_btn.click(
