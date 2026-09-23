@@ -170,14 +170,31 @@ def build_app():
                 </div>
                 """
             )
-            idea_input = gr.Textbox(
-                label="Describe Your Proposed Research Area",
-                placeholder="e.g. I want to make an AI system that can detect fake websites and phishing attacks using URL lexical semantics, HTML structural elements, and webpage screenshots with explainable attention maps.",
-                lines=5,
-                value=SAMPLE_IDEAS[0]["description"],
-                show_label=False,
-                elem_classes=["research-idea-input"],
-            )
+            with gr.Group(elem_classes=["research-input-shell"]):
+                gr.HTML(
+                    """
+                    <div class="research-input-topbar">
+                        <div class="research-input-label"><span class="input-signal-dot"></span> RESEARCH IDEA <span class="input-label-muted">/ NATURAL LANGUAGE INPUT</span></div>
+                        <div class="research-input-status"><span></span> READY TO ANALYZE</div>
+                    </div>
+                    """
+                )
+                idea_input = gr.Textbox(
+                    label="Describe Your Proposed Research Area",
+                    placeholder="Describe the problem you want to solve, the data you have, and the outcome you want to achieve...",
+                    lines=6,
+                    value=SAMPLE_IDEAS[0]["description"],
+                    show_label=False,
+                    elem_classes=["research-idea-input"],
+                )
+                gr.HTML(
+                    """
+                    <div class="research-input-footer">
+                        <span><b>TIP</b> Include your problem, data, method, or expected outcome for sharper results.</span>
+                        <span class="research-input-shortcut">PRESS <b>EXPLORE</b> TO BUILD YOUR LANDSCAPE</span>
+                    </div>
+                    """
+                )
 
             gr.HTML("<div class='input-studio-hint'><span>⌁</span> Be specific about the problem, data, method, or outcome you want to explore.</div>")
             explore_btn = gr.Button("EXPLORE RESEARCH LANDSCAPE  →", variant="primary", elem_classes=["primary-btn", "explore-command-btn"], size="lg")
