@@ -102,10 +102,11 @@ class SaturationEngine:
         fig.add_shape(type="rect", x0=0.0, y0=0.0, x1=0.5, y1=0.5, fillcolor="rgba(99, 102, 241, 0.07)", line_width=0, layer="below")
 
         # Add quadrant labels
-        fig.add_annotation(x=0.25, y=0.92, text="<b>Saturated Baseline</b><br><span style='font-size:10px;color:#94a3b8'>Crowded / Incremental Gaps</span>", showarrow=False, font=dict(color="#F87171", size=11))
-        fig.add_annotation(x=0.75, y=0.92, text="<b>Competitive High-Impact</b><br><span style='font-size:10px;color:#94a3b8'>High Interest / High Activity</span>", showarrow=False, font=dict(color="#FBBF24", size=11))
-        fig.add_annotation(x=0.75, y=0.08, text="<b>OPTIMAL SCOPE (HIGH OPPORTUNITY)</b><br><span style='font-size:10px;color:#94a3b8'>High Relevance / Uncrowded Space</span>", showarrow=False, font=dict(color="#34D399", size=12))
-        fig.add_annotation(x=0.25, y=0.08, text="<b>Emerging Niche</b><br><span style='font-size:10px;color:#94a3b8'>Sparse / Foundational Exploration</span>", showarrow=False, font=dict(color="#818CF8", size=11))
+        quadrant_font = dict(size=10, family="Inter")
+        fig.add_annotation(x=0.25, y=0.94, text="<b>SATURATED BASELINE</b>", showarrow=False, font=dict(color="#F87171", **quadrant_font))
+        fig.add_annotation(x=0.75, y=0.94, text="<b>COMPETITIVE FRONTIER</b>", showarrow=False, font=dict(color="#FBBF24", **quadrant_font))
+        fig.add_annotation(x=0.75, y=0.06, text="<b>HIGH OPPORTUNITY</b>", showarrow=False, font=dict(color="#34D399", **quadrant_font))
+        fig.add_annotation(x=0.25, y=0.06, text="<b>EMERGING NICHE</b>", showarrow=False, font=dict(color="#818CF8", **quadrant_font))
 
         # Plot cluster points
         x_vals = [m.scope_potential for m in metrics_list]
@@ -124,18 +125,20 @@ class SaturationEngine:
         fig.add_trace(go.Scatter(
             x=x_vals,
             y=y_vals,
-            mode="markers+text",
+            mode="markers",
             marker=dict(
-                size=[max(18, min(36, m.paper_count * 5)) for m in metrics_list],
+                size=[max(16, min(30, m.paper_count * 4)) for m in metrics_list],
                 color=y_vals,
                 colorscale="Viridis",
                 showscale=True,
-                colorbar=dict(title="Saturation", thickness=12, len=0.7, tickfont=dict(color="#CBD5E1")),
-                line=dict(color="#FFFFFF", width=2)
+                colorbar=dict(
+                    title=dict(text="Saturation", font=dict(size=10, color="#CBD5E1")),
+                    thickness=10,
+                    len=0.62,
+                    tickfont=dict(color="#CBD5E1", size=9),
+                ),
+                line=dict(color="#FFFFFF", width=1.5)
             ),
-            text=labels,
-            textposition="top center",
-            textfont=dict(color="#F1F5F9", size=12, family="Inter, sans-serif"),
             hoverinfo="text",
             hovertext=hover_texts
         ))
@@ -153,22 +156,22 @@ class SaturationEngine:
             ),
             xaxis=dict(
                 title="<b>Scope Potential (Novelty & Feasibility)</b>",
-                title_font=dict(color="#CBD5E1"),
+                title_font=dict(color="#CBD5E1", size=11),
                 range=[-0.02, 1.05],
                 gridcolor="rgba(51, 65, 85, 0.3)",
-                tickfont=dict(color="#94A3B8")
+                tickfont=dict(color="#94A3B8", size=9)
             ),
             yaxis=dict(
                 title="<b>Research Saturation Index (Literature Volume & Citations)</b>",
-                title_font=dict(color="#CBD5E1"),
+                title_font=dict(color="#CBD5E1", size=11),
                 range=[-0.02, 1.05],
                 gridcolor="rgba(51, 65, 85, 0.3)",
-                tickfont=dict(color="#94A3B8")
+                tickfont=dict(color="#94A3B8", size=9)
             ),
             template="plotly_dark",
             paper_bgcolor="#0B0F19",
             plot_bgcolor="#0F172A",
-            margin=dict(l=60, r=40, t=52, b=60),
+            margin=dict(l=62, r=34, t=48, b=54),
             height=470,
             hoverlabel=dict(
                 bgcolor="#111C35",
@@ -219,8 +222,18 @@ class SaturationEngine:
             template="plotly_dark",
             paper_bgcolor="#0B0F19",
             plot_bgcolor="#0F172A",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, font=dict(color="#CBD5E1")),
-            margin=dict(l=50, r=30, t=60, b=50),
+            legend=dict(
+                orientation="h",
+                yanchor="top",
+                y=-0.24,
+                xanchor="left",
+                x=0,
+                font=dict(color="#CBD5E1", size=9),
+                bgcolor="rgba(8, 15, 31, 0.7)",
+                bordercolor="rgba(148, 163, 184, 0.15)",
+                borderwidth=1,
+            ),
+            margin=dict(l=50, r=18, t=48, b=108),
             height=370,
             hoverlabel=dict(
                 bgcolor="#111C35",

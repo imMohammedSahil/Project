@@ -156,13 +156,11 @@ def build_app():
         all_papers_state = gr.State([])
         metrics_state = gr.State([])
 
-        # Header Hero
-        gr.HTML(render_hero_header())
-
         # ===================================================================
         # STAGE 1: HERO RESEARCH HYPOTHESIS COMMAND STUDIO
         # ===================================================================
         with gr.Group(elem_classes=["input-command-studio"]) as input_section:
+            gr.HTML(render_hero_header())
             gr.HTML(
                 """
                 <div class="input-studio-heading">
@@ -286,13 +284,13 @@ def build_app():
                         """
                     )
                     with gr.Row(elem_classes=["saturation-chart-grid"]):
-                        with gr.Column(scale=7, elem_classes=["saturation-chart-card", "saturation-matrix-card"]):
+                        with gr.Column(scale=6, elem_classes=["saturation-chart-card", "saturation-matrix-card"]):
                             gr.HTML("<div class='saturation-card-kicker'>DECISION MAP <span>01</span></div><div class='saturation-card-title'>Scope potential × saturation</div><div class='saturation-card-copy'>Each node represents a research direction. Larger nodes indicate more anchor papers.</div>")
                             matrix_plot = gr.Plot(
                                 label="Scope Potential vs Literature Saturation Index",
                                 elem_classes=["saturation-plot"],
                             )
-                        with gr.Column(scale=5, elem_classes=["saturation-chart-card", "saturation-timeline-card"]):
+                        with gr.Column(scale=6, elem_classes=["saturation-chart-card", "saturation-timeline-card"]):
                             gr.HTML("<div class='saturation-card-kicker'>MOMENTUM TRACKER <span>02</span></div><div class='saturation-card-title'>Publication activity</div><div class='saturation-card-copy'>Track how attention has moved across the literature from 2019 to 2026.</div>")
                             timeline_plot = gr.Plot(
                                 label="Publication Activity Timeline (2019-2026)",
