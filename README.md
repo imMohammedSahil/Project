@@ -123,7 +123,7 @@ We provide a ready-to-run notebook `Research_Scope_AI_Colab.ipynb`:
 ## 📂 Project Structure
 
 ```
-c:\Holidays\Day 3\
+.
 ├── config.py                 # Global settings, API endpoints, caching & model config
 ├── cache_manager.py          # SQLite response cache for queries & paper metadata
 ├── academic_retrieval.py     # Semantic Scholar & OpenAlex API search engine
@@ -135,6 +135,46 @@ c:\Holidays\Day 3\
 ├── ui_components.py          # Glassmorphism dark CSS & HTML card templates
 ├── app.py                    # Complete Gradio Blocks interactive web app
 ├── Research_Scope_AI_Colab.ipynb # 1-Click Google Colab Notebook
+├── test_block1.py            # Test: Academic retrieval & SQLite cache engine
+├── test_block2.py            # Test: Embeddings & NetworkX knowledge graph
+├── test_block3.py            # Test: Research saturation & 2D landscape matrix
+├── test_block4.py            # Test: Groq LLM & scope generator engine
+├── test_block5.py            # Test: Markdown & JSON export utilities
+├── test_block6.py            # Test: End-to-end integration pipeline
 ├── requirements.txt          # Package dependencies
 └── README.md                 # Documentation & Presentation Guide
 ```
+
+---
+
+## 🧪 Running Verification Tests
+
+Run the modular test suite to verify individual pipeline components:
+
+```bash
+# Test Block 1: Academic Retrieval & Cache Engine
+python test_block1.py
+
+# Test Block 2: Embeddings & Knowledge Graph
+python test_block2.py
+
+# Test Block 3: Saturation Engine & Visual Matrix
+python test_block3.py
+
+# Test Block 4: Scope Generator & LLM Engine
+python test_block4.py
+
+# Test Block 5: Export Utilities (JSON/Markdown)
+python test_block5.py
+
+# Test Block 6: Complete End-to-End Pipeline
+python test_block6.py
+```
+
+---
+
+## 👥 Contributors & Collaboration
+
+- **Mohammed Sahil** ([@imMohammedSahil](https://github.com/imMohammedSahil)) - Lead Developer & Architecture
+- **Madhava K S** ([@Madhavaks7](https://github.com/Madhavaks7)) - Research & Documentation Collaboration
+
